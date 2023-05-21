@@ -18,6 +18,8 @@ import {useRoute, useRouter} from 'vue-router';
 
 useRouter().push('/');
 
+
+
 // Настройка layout-ов и анимации для перехода между страницами  ///////////////////////////////////////////////////////////
 const $route = ref(useRoute());
 console.log($route.value.fullPath);

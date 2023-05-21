@@ -11,59 +11,59 @@
               preserveAspectRatio="xMidYMid meet" viewBox="0 0 1080 1080"
       >
         <defs>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_5_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_5_G" fill="freeze"
                             attributeName="transform" from="0.63 0.63" to="0.63 0.63" type="scale" additive="sum"
                             keyTimes="0;0.4166667;1" values="0.63 0.63;0.63 0.69261;0.63 0.63"
                             keySplines="0.167 0 0.667 1;0.333 0 0.667 1" calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_5_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_5_G" fill="freeze"
                             attributeName="transform" from="-546.349 6.032" to="-546.349 6.032" type="translate"
                             additive="sum" keyTimes="0;1" values="-546.349 6.032;-546.349 6.032" keySplines="0 0 1 1"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_4_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_4_G" fill="freeze"
                             attributeName="transform" from="0.8300000000000001 0.8300000000000001"
                             to="0.8300000000000001 0.8300000000000001" type="scale" additive="sum"
                             keyTimes="0;0.0833333;0.4;0.8166667;1"
                             values="0.8300000000000001 0.8300000000000001;0.8300000000000001 0.8300000000000001;0.8300000000000001 0.75;0.8300000000000001 0.87;0.8300000000000001 0.8300000000000001"
                             keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_4_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_4_G" fill="freeze"
                             attributeName="transform" from="-200.277 -15.458" to="-200.277 -15.458" type="translate"
                             additive="sum" keyTimes="0;1" values="-200.277 -15.458;-200.277 -15.458" keySplines="0 0 1 1"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_3_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_3_G" fill="freeze"
                             attributeName="transform" from="1.27 1.27" to="1.27 1.27" type="scale" additive="sum"
                             keyTimes="0;0.3666667;1" values="1.27 1.27;1.06 1.06;1.27 1.27"
                             keySplines="0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833" calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_3_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_3_G" fill="freeze"
                             attributeName="transform" from="-23.423 -286.486" to="-23.423 -286.486" type="translate"
                             additive="sum" keyTimes="0;1" values="-23.423 -286.486;-23.423 -286.486" keySplines="0 0 1 1"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_2_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_2_G" fill="freeze"
                             attributeName="transform" from="0.37178 0.37178" to="0.37178 0.37178" type="scale"
                             additive="sum" keyTimes="0;0.3;0.4666667;0.7;0.95;1"
                             values="0.37178 0.37178;0 0;0.45177999999999996 0.45177999999999996;0 0;0.37178 0.37178;0.37178 0.37178"
                             keySplines="0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0 0 0 0"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_2_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_2_G" fill="freeze"
                             attributeName="transform" from="-96.5 -122" to="-96.5 -122" type="translate" additive="sum"
                             keyTimes="0;1" values="-96.5 -122;-96.5 -122" keySplines="0 0 1 1" calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_1_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_1_G" fill="freeze"
                             attributeName="transform" from="0.37178 0.37178" to="0.37178 0.37178" type="scale"
                             additive="sum" keyTimes="0;0.1666667;0.25;0.5666667;0.8666667;1"
                             values="0.37178 0.37178;0 0;0.45177999999999996 0.45177999999999996;0 0;0.37178 0.37178;0.37178 0.37178"
                             keySplines="0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0 0 0 0"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_1_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_1_G" fill="freeze"
                             attributeName="transform" from="-96.5 -122" to="-96.5 -122" type="translate" additive="sum"
                             keyTimes="0;1" values="-96.5 -122;-96.5 -122" keySplines="0 0 1 1" calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_0_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_0_G" fill="freeze"
                             attributeName="transform" from="0.29178000000000004 0.29178000000000004"
                             to="0.29178000000000004 0.29178000000000004" type="scale" additive="sum"
                             keyTimes="0;0.0833333;0.3166667;0.4333333;0.6666667;0.9333333;1"
                             values="0.29178000000000004 0.29178000000000004;0.29178000000000004 0.29178000000000004;0 0;0.34178 0.34178;0 0;0.29178000000000004 0.29178000000000004;0.29178000000000004 0.29178000000000004"
                             keySplines="0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0.167 0.167 0.833 0.833;0 0 0 0"
                             calcMode="spline"/>
-          <animateTransform repeatCount="indefinite" dur="2s" begin="0s" xlink:href="#_R_G_L_0_G" fill="freeze"
+          <animateTransform class='ghost-animation-element' repeatCount="indefinite" dur="0" begin="0s" xlink:href="#_R_G_L_0_G" fill="freeze"
                             attributeName="transform" from="-96.5 -122" to="-96.5 -122" type="translate" additive="sum"
                             keyTimes="0;1" values="-96.5 -122;-96.5 -122" keySplines="0 0 1 1" calcMode="spline"/>
           <animate attributeType="XML" attributeName="opacity" dur="2s" from="0" to="1" xlink:href="#time_group"/>
@@ -111,7 +111,13 @@
 import {onMounted} from "vue";
 import Icon from "@/components/icon.vue";
 
-
+setTimeout(()=>{
+  console.log("Handler working");
+  document.querySelectorAll('.ghost-animation-element').forEach(el=>{
+    el.setAttribute('dur', '2s');
+    console.log(el);
+  });
+},2000);
 </script>
 
 <style lang="scss">
