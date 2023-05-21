@@ -1,7 +1,7 @@
 <template>
   <main class="page question-page">
     <div class="question-page__content">
-      <h1>Вопрос №{{ question_index + 1 }} / {{ questions.length }}</h1>
+      <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>
 
       <p class="question-page__question">
         {{ question.text }}
@@ -37,16 +37,18 @@
 
 <style lang="scss">
 .question-page {
+  width: 100vw;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 60px;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 20px;
-    width: 500px;
+    width: 400px;
   }
 
   &__variants {
@@ -57,8 +59,16 @@
     gap: 5px;
   }
 
-  &__image {
+  &__image-wrapper {
+    width: 300px;
+    max-height: 100%;
 
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    //object-fit:cover;
   }
 }
 
@@ -73,20 +83,24 @@
 
 <script setup>
 import {computed, ref} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {useQuestionsStore} from "@/stores/questions";
 import {useProgressStore} from "@/stores/progress";
 
-const $route = useRoute();
+const $route = useRoute(), $router = useRouter();
 const {questions} = useQuestionsStore();
 const {addPoint} = useProgressStore();
-const question_index = $route.params.id < 0 ? 0 : (($route.params.id > questions.length - 1) ? (+questions.length - 1) : +$route.params.id);
-console.log('index, ', question_index);
-const question = questions[question_index];
+if ($route.params.id <= 0) $router.push("/question/1")
+else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
+
+// const question_number = $route.params.id < 0 ? 0 : (($route.params.id > questions.length - 1) ? (+questions.length - 1) : +$route.params.id);
+const question_number = $route.params.id - 1;
+console.log('index, ', question_number);
+const question = questions[question_number];
 const question_image = computed(() => answer_text.value ? question.full_image : question.image);
 
-const next_button_text = computed(() => $route.params.id >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
-const next_button_url = computed(() => question_index + 1 >= questions.length ? `/result` : `/question/${question_index + 1}`)
+const next_button_text = computed(() => question_number >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
+const next_button_url = computed(() => question_number >= questions.length ? `/result` : `/question/${question_number + 1}`)
 const answer_text = ref(null);
 
 const show_next_button = ref(false);

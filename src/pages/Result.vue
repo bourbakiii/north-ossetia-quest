@@ -2,7 +2,7 @@
   <main class="page index-page">
     <h1>Результат</h1>
 
-    <h2>{{points}} / {{question_length}}</h2>
+    <h2>Вы - {{level}} ({{points}} / {{question_length}})</h2>
 
     <router-link class="btn btn-primary" to="/">На главную</router-link>
   </main>
@@ -12,9 +12,9 @@
 import {useProgressStore} from "@/stores/progress.js";
 import {useQuestionsStore} from "@/stores/questions.js";
 
-
 const {points} = useProgressStore();
 const question_length = useQuestionsStore().questions.length;
+const level = points>3?(points>6?'Профи':'Знаток'):'Новичок';
 </script>
 
 <style lang="scss">
