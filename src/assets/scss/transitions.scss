@@ -23,3 +23,16 @@
     transition: .5s;
   }
 }
+
+.answer-image-transition {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-active,
+  &-leave-active {
+    transition: .5s;
+  }
+}
+
