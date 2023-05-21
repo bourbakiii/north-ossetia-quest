@@ -1,7 +1,7 @@
 import {ref} from 'vue'
 import {defineStore} from 'pinia'
 
-export const useQuestionsStore = defineStore('general', () => {
+export const useQuestionsStore = defineStore('questions', () => {
     const questions = ref([{
         text: 'С кем Северная Осетия не имеет общей границы?',
         variants: {

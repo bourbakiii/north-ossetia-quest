@@ -11,8 +11,6 @@
 </template>
 <script setup>
 import Icon from "@/components/icon.vue";
-
-console.log("Layout rendered");
 </script>
 <style lang="scss" scoped>
 .question-layout {
@@ -33,14 +31,17 @@ console.log("Layout rendered");
   color: black;
   transition: .25s;
   text-decoration: none;
-  &:hover{
+
+  &:hover {
     gap: 6px;
   }
+
   &__icon {
     width: 20px;
     height: 13px;
   }
-  &__text{
+
+  &__text {
     font-size: 10px
   }
 }

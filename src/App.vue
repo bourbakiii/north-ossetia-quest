@@ -14,7 +14,9 @@
 
 <script setup>
 import {defineAsyncComponent, ref, watch} from 'vue';
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
+
+// useRouter().push('/');
 
 // Настройка layout-ов и анимации для перехода между страницами  ///////////////////////////////////////////////////////////
 const $route = ref(useRoute());
