@@ -99,8 +99,8 @@ console.log('index, ', question_number);
 const question = questions[question_number];
 const question_image = computed(() => answer_text.value ? question.full_image : question.image);
 
-const next_button_text = computed(() => question_number >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
-const next_button_url = computed(() => question_number >= questions.length ? `/result` : `/question/${question_number + 1}`)
+const next_button_text = computed(() => +$route.params.id >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
+const next_button_url = computed(() => +$route.params.id >= questions.length ? `/result` : `/question/${+$route.params.id + 1}`)
 const answer_text = ref(null);
 
 const show_next_button = ref(false);
