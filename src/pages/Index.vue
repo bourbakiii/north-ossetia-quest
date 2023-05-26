@@ -24,6 +24,7 @@ import Alanka from "@/components/alanka.vue";
   justify-content: center;
   position: relative;
 
+
   &__content {
     display: flex;
     align-items: center;

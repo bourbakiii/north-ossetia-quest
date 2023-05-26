@@ -1,5 +1,7 @@
 <template>
   <main class="page question-page">
+    <img :src="image_url" alt="Background image" class="question-page__background"/>
+
     <div class="question-page__content">
       <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>
 
@@ -35,6 +37,11 @@
   </main>
 </template>
 
+<script setup>
+
+
+</script>
+
 <style lang="scss">
 .question-page {
   width: 100vw;
@@ -43,6 +50,16 @@
   justify-content: flex-start;
   gap: 60px;
 
+  &__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    z-index: -1;
+  }
   &__content {
     display: flex;
     flex-direction: column;
@@ -88,6 +105,12 @@ import {useQuestionsStore} from "@/stores/questions";
 import {useProgressStore} from "@/stores/progress";
 
 const $route = useRoute(), $router = useRouter();
+
+const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.id}.svg`, import.meta.url);
+console.log(image_url);
+
+
+
 const {questions} = useQuestionsStore();
 const {addPoint} = useProgressStore();
 if ($route.params.id <= 0) $router.push("/question/1")

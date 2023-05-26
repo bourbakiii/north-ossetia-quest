@@ -16,7 +16,7 @@
 import {defineAsyncComponent, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 
-useRouter().push('/');
+// !!!!useRouter().push('/');
 
 
 
