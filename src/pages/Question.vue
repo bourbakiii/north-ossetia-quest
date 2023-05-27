@@ -37,11 +37,6 @@
   </main>
 </template>
 
-<script setup>
-
-
-</script>
-
 <style lang="scss">
 .question-page {
   width: 100vw;
@@ -60,6 +55,7 @@
     display: block;
     z-index: -1;
   }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -107,9 +103,6 @@ import {useProgressStore} from "@/stores/progress";
 const $route = useRoute(), $router = useRouter();
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.id}.svg`, import.meta.url);
-console.log(image_url);
-
-
 
 const {questions} = useQuestionsStore();
 const {addPoint} = useProgressStore();

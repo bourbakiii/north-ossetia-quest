@@ -1,5 +1,5 @@
 <template>
-  <svg ref="svgDOM" @mouseup="" @mousedown="animateHello" xmlns="http://www.w3.org/2000/svg"
+  <svg @click="animateHello" ref="svgDOM" @mouseup="" @mousedown="animateHello" xmlns="http://www.w3.org/2000/svg"
        xmlns:xlink="http://www.w3.org/1999/xlink"
        preserveAspectRatio="xMidYMid meet" width="1080" height="1080" viewBox="0 0 1080 1080"
        style="width:100%;height:100%">
@@ -1046,29 +1046,23 @@
 
 <script setup>
 
-import {nextTick, onMounted, ref} from "vue";
+import {nextTick, onBeforeMount, onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
-
-
-console.log(svgDOM);
-
-// onMounted(() => {
-// console.log(svgDOM);
-// svgDOM.beginElement();
-// });
 const timings = {
   hello_animation: '3',
 }
 const hello_animation_time = ref('3s');
-let current_animation_timeout = null;
+let animation_timeout = null;
 
 function animateHello() {
-  console.log(svgDOM.value);
-
-  // svgDOM.value.pauseAnimations()
   svgDOM.value.querySelectorAll('.hello-animation').forEach(el => el.beginElement());
-  setTimeout(()=>svgDOM.value.pauseAnimations(), 34);
+  svgDOM.value.unpauseAnimations();
+  clearTimeout(animation_timeout);
+  animation_timeout = setTimeout(() => {
+    console.log("Animation stop");
+    svgDOM.value.pauseAnimations();
+  }, 3000)
 }
 </script>
 
