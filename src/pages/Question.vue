@@ -1,96 +1,96 @@
 <template>
-  <main class="page question-page">
-    <img :src="image_url" alt="Background image" class="question-page__background"/>
+    <main class="page question-page">
+        <img :src="image_url" alt="Background image" class="question-page__background"/>
 
-    <div class="question-page__content">
-      <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>
+        <div class="question-page__content">
+            <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>
 
-      <p class="question-page__question">
-        {{ question.text }}
-      </p>
+            <p class="question-page__question">
+                {{ question.text }}
+            </p>
 
-      <div class="question-page__variants">
-        <button :disabled="answer_text" @click="selectVariant(key, value)"
-                v-for="(value, key) in question.variants" class="btn variant-button"
-                :class="answer_text?(question.proper === key?'btn-success':'btn-danger'):'btn-outline-primary'">
-          {{ value.title }}
-        </button>
-      </div>
+            <div class="question-page__variants">
+                <button :disabled="answer_text" @click="selectVariant(key, value)"
+                        v-for="(value, key) in question.variants" class="btn variant-button"
+                        :class="answer_text?(question.proper === key?'btn-success':'btn-danger'):'btn-outline-primary'">
+                    {{ value.title }}
+                </button>
+            </div>
 
-      <transition name="answer-text-transition">
-        <p v-if="answer_text" class="question-page__answer-text">{{ answer_text }}</p>
-      </transition>
-      <transition name="answer-text-transition">
-        <router-link v-if="show_next_button" :to="next_button_url" type="button"
-                     class="btn btn-primary">{{ next_button_text }}
-        </router-link>
-      </transition>
-    </div>
-    <div v-if="question.image" class="question-page__image-wrapper">
-      <transition name="answer-image-transition" mode="out-in">
-        <img v-if="!answer_text" src="@/assets/images/2-crop.png" alt="Картинка вопроса"
-             class="question-page__image question-page__image_crop">
-        <img v-else src="@/assets/images/2-full.jpg" alt="Полная картинка вопроса"
-             class="question-page__image question-page__image_crop">
-      </transition>
-    </div>
-  </main>
+            <transition name="answer-text-transition">
+                <p v-if="answer_text" class="question-page__answer-text">{{ answer_text }}</p>
+            </transition>
+            <transition name="answer-text-transition">
+                <router-link v-if="show_next_button" :to="next_button_url" type="button"
+                             class="btn btn-primary">{{ next_button_text }}
+                </router-link>
+            </transition>
+        </div>
+        <div v-if="question.image" class="question-page__image-wrapper">
+            <transition name="answer-image-transition" mode="out-in">
+                <img v-if="!answer_text" src="@/assets/images/2-crop.png" alt="Картинка вопроса"
+                     class="question-page__image question-page__image_crop">
+                <img v-else src="@/assets/images/2-full.jpg" alt="Полная картинка вопроса"
+                     class="question-page__image question-page__image_crop">
+            </transition>
+        </div>
+    </main>
 </template>
 
 <style lang="scss">
 .question-page {
-  width: 100vw;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 60px;
-
-  &__background {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: block;
-    z-index: -1;
-  }
-
-  &__content {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    gap: 20px;
-    width: 400px;
-  }
+    gap: 60px;
 
-  &__variants {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 5px;
-  }
+    &__background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+    }
 
-  &__image-wrapper {
-    width: 300px;
-    max-height: 100%;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+        width: 400px;
+        z-index: 10;
+    }
 
-  }
+    &__variants {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 5px;
+    }
 
-  &__image {
-    width: 100%;
-    height: auto;
-    //object-fit:cover;
-  }
+    &__image-wrapper {
+        width: 300px;
+        max-height: 100%;
+        z-index: 10;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        //object-fit:cover;
+    }
 }
 
 .variant-button {
-  text-align: left;
-  word-break: keep-all;
-  white-space: normal;
-  font-size: 13px;
-  text-overflow: ellipsis;
+    text-align: left;
+    word-break: keep-all;
+    white-space: normal;
+    font-size: 13px;
+    text-overflow: ellipsis;
 }
 </style>
 
@@ -123,11 +123,11 @@ const show_next_button = ref(false);
 const show_next_button_delay = 1500;
 
 function selectVariant(key, value) {
-  answer_text.value = value.answer;
+    answer_text.value = value.answer;
 
-  setTimeout(() => show_next_button.value = true, show_next_button_delay);
+    setTimeout(() => show_next_button.value = true, show_next_button_delay);
 
-  if (question.proper !== key) return console.error('Wrong');
-  addPoint();
+    if (question.proper !== key) return console.error('Wrong');
+    addPoint();
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div class="layout question-layout">
-
     <router-link to="/" class="question-layout__main-link main-link">
       <icon class="main-link__icon" name="arrow-back"/>
       <p class="main-link__text">на главную</p>
@@ -20,7 +19,7 @@ import Icon from "@/components/icon.vue";
   padding: 20px;
   max-width: 100vw;
   max-height: 100vh;
-
+    background-color: black;
 }
 
 .question-page {
