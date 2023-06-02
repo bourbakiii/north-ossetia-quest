@@ -3,47 +3,76 @@
         <img :src="image_url" alt="Background image" class="question-page__background"/>
 
         <div class="question-page__content">
-            <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>
-
-            <p class="question-page__question">
-                {{ question.text }}
+            <p class="question-info">
+                {{ $route.params.id }} / {{ questions.length }}
             </p>
+            <div class="content">
+                    <div class="question-place">
+                        <transition name="answer-text-transition" mode="out-in">
+                            <p v-if="answer_text" class="question-page__answer">{{ answer_text }}</p>
+                            <p v-else class="question-page__answer">{{ question.text }}</p>
+                        </transition>
+                        <transition name="answer-text-transition">
+                            <router-link v-if="show_next_button" :to="next_button_url" type="button"
+                                         class="btn btn-primary">{{ next_button_text }}
+                            </router-link>
+                        </transition>
+                    </div>
+                <div class="buttons">
+                    <button class="question-button" :class="answer_text?question.proper === key?'success':'wrong':''"
+                            :disabled="answer_text" @click="selectVariant(key,value)"
+                            v-for="(value, key) in question.variants">{{ value.title }}
+                    </button>
+                </div>
+            </div>
+            <div class="question">
 
-            <div class="question-page__variants">
-                <button :disabled="answer_text" @click="selectVariant(key, value)"
-                        v-for="(value, key) in question.variants" class="btn variant-button"
-                        :class="answer_text?(question.proper === key?'btn-success':'btn-danger'):'btn-outline-primary'">
-                    {{ value.title }}
-                </button>
+
             </div>
 
-            <transition name="answer-text-transition">
-                <p v-if="answer_text" class="question-page__answer-text">{{ answer_text }}</p>
-            </transition>
-            <transition name="answer-text-transition">
-                <router-link v-if="show_next_button" :to="next_button_url" type="button"
-                             class="btn btn-primary">{{ next_button_text }}
-                </router-link>
-            </transition>
+            <!--            <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>-->
+
+            <!--            <p class="question-page__question">-->
+            <!--                {{ question.text }}-->
+            <!--            </p>-->
+
+            <!--            <div class="question-page__variants">-->
+            <!--                <button :disabled="answer_text" @click="selectVariant(key, value)"-->
+            <!--                        v-for="(value, key) in question.variants" class="question-button"-->
+            <!--                        :class="question.proper === key?'success':'wrong'">-->
+            <!--                    {{ value.title }}-->
+            <!--                </button>-->
+            <!--            </div>-->
+
+            <!--            <transition name="answer-text-transition">-->
+            <!--                <p v-if="answer_text" class="question-page__answer-text">{{ answer_text }}</p>-->
+            <!--            </transition>-->
+            <!--            <transition name="answer-text-transition">-->
+            <!--                <router-link v-if="show_next_button" :to="next_button_url" type="button"-->
+            <!--                             class="btn btn-primary">{{ next_button_text }}-->
+            <!--                </router-link>-->
+            <!--            </transition>-->
         </div>
-        <div v-if="question.image" class="question-page__image-wrapper">
-            <transition name="answer-image-transition" mode="out-in">
-                <img v-if="!answer_text" src="@/assets/images/2-crop.png" alt="Картинка вопроса"
-                     class="question-page__image question-page__image_crop">
-                <img v-else src="@/assets/images/2-full.jpg" alt="Полная картинка вопроса"
-                     class="question-page__image question-page__image_crop">
-            </transition>
-        </div>
+        <!--        <div v-if="question.image" class="question-page__image-wrapper">-->
+        <!--            <transition name="answer-image-transition" mode="out-in">-->
+        <!--                <img v-if="!answer_text" src="@/assets/images/2-crop.png" alt="Картинка вопроса"-->
+        <!--                     class="question-page__image question-page__image_crop">-->
+        <!--                <img v-else src="@/assets/images/2-full.jpg" alt="Полная картинка вопроса"-->
+        <!--                     class="question-page__image question-page__image_crop">-->
+        <!--            </transition>-->
+        <!--        </div>-->
     </main>
 </template>
 
 <style lang="scss">
+
+
 .question-page {
-    width: 100vw;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 60px;
+    flex-direction: column;
+    width: 100%;
 
     &__background {
         position: fixed;
@@ -56,41 +85,109 @@
     }
 
     &__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 20px;
-        width: 400px;
+        background-color: white;
         z-index: 10;
-    }
-
-    &__variants {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         align-items: stretch;
-        gap: 5px;
+        justify-content: flex-start;
     }
 
-    &__image-wrapper {
-        width: 300px;
-        max-height: 100%;
-        z-index: 10;
-    }
-
-    &__image {
-        width: 100%;
-        height: auto;
-        //object-fit:cover;
-    }
+    //
+    //    &__variants {
+    //        display: flex;
+    //        flex-direction: column;
+    //        justify-content: flex-start;
+    //        align-items: stretch;
+    //        gap: 5px;
+    //    }
+    //
+    //    &__image-wrapper {
+    //        width: 300px;
+    //        max-height: 100%;
+    //        z-index: 10;
+    //    }
+    //
+    //    &__image {
+    //        width: 100%;
+    //        height: auto;
+    //        //object-fit:cover;
+    //    }
 }
 
-.variant-button {
-    text-align: left;
-    word-break: keep-all;
-    white-space: normal;
-    font-size: 13px;
-    text-overflow: ellipsis;
+//
+//.variant-button {
+//    text-align: left;
+//    word-break: keep-all;
+//    white-space: normal;
+//    font-size: 13px;
+//    text-overflow: ellipsis;
+//}
+
+.question-info {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.buttons {
+
+    min-width: 400px;
+    width: max-content;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 5px;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-direction: row;
+}
+.question-place
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    min-width: 400px;
+    width: auto;
+    max-width: 600px;
+}
+
+.question-button {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #B91D42;
+    border-radius: 60px;
+    height: 45px;
+    cursor: pointer;
+    transition: .2s;
+
+    &.success {
+        background-color: forestgreen;
+        color: white;
+        border-color: forestgreen;
+    }
+
+    &.wrong {
+        background-color: darkred;
+        color: white;
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+
+    &:not(&:disabled):hover {
+        transform: scale(1.05);
+    }
 }
 </style>
 
