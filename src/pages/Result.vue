@@ -1,7 +1,7 @@
 <template>
   <main class="page result-page">
-    <h1>{{result.title}} ({{points}} / {{question_length}})</h1>
-      <p>{{result.text}}</p>
+<!--    <h1>{{result.title}} ({{points}} / {{question_length}})</h1>-->
+<!--      <p>{{result.text}}</p>-->
     <router-link class="base-button main-button" to="/">На главную</router-link>
   </main>
 </template>
@@ -10,10 +10,14 @@
 import {useProgressStore} from "@/stores/progress.js";
 import {useQuestionsStore} from "@/stores/questions.js";
 
-const {points, getResults} = useProgressStore();
-const result = getResults();
+const {points} = useProgressStore();
+function getResults(points){
+    if(points.value<=3) return {title:'Турист', text:'О Северной Осетии вы знаете не слишком много. Мы рады, что наша игра познакомила вас поближе с этой прекрасной республикой. Осетия знаменита не только удивительно живописными пейзажами и культурными памятниками, но и большим гостеприимством. Обязательно посетите этот уютный уголок России и Включайтесь в Осетию!'}
+    if(points.value<=6) return {title:'Почтенный гость осетина', text:'Вы кое-что знаете о Северной Осетии и, скорее всего, бывали там. Уверены, что узнав из нашей игры ещё больше об этой прекрасной республике, вы захотите побывать там снова. Тем более, что Осетия славится не только живописными пейзажами и культурными памятниками, но и большим гостеприимством. Так что не откладывайте поездку и Включайтесь в Осетию!'}
+    else return {title:'Истинный горец', text:'Уæлахизимæ дын арфæ кæнæм! Вы прекрасно знаете Северную Осетию и, возможно, даже поняли, что первой фразой мы поздравили вас по-осетински с победой в игре. Вам не понаслышке знакомы живописные пейзажи республики и разновидности начинок осетинских пирогов. Приезжайте почаще в этот уютный и гостеприимный уголок России, берите с собой друзей и все вместе Включайтесь в Осетию!'}
+}
+const result = getResults(points);
 const question_length = useQuestionsStore().questions.length;
-const level = points>3?(points>6?'Профи':'Знаток'):'Новичок';
 </script>
 
 <style lang="scss" scoped>
