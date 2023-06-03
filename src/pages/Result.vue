@@ -1,7 +1,7 @@
 <template>
   <main class="page result-page">
-<!--    <h1>{{result.title}} ({{points}} / {{question_length}})</h1>-->
-<!--      <p>{{result.text}}</p>-->
+    <h1>{{result.title}} ({{points}} / {{question_length}})</h1>
+      <p>{{result.text}}</p>
     <router-link class="base-button main-button" to="/">На главную</router-link>
   </main>
 </template>
