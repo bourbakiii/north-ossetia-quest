@@ -10,15 +10,15 @@
                 <div class="question-place">
                     <div class="question-text">
                         <transition name="answer-text-transition" mode="out-in">
-                            <p v-if="answer_text" class="question-page__answer">
+                            <p v-if="answer_text" class="question-answer">
                                 <span :class="is_success?'success':'wrong'">{{is_success?'Верно! ':'Неверно. '}}</span>
                                 {{ answer_text }}</p>
-                            <p v-else class="question-page__answer">{{ question.text }}</p>
+                            <p v-else class="question-answer">{{ question.text }}</p>
                         </transition>
                     </div>
                     <transition name="answer-text-transition">
                         <router-link v-if="show_next_button" :to="next_button_url" type="button"
-                                     class="btn btn-primary question-answer-button">{{ next_button_text }}
+                                     class="question-button question-answer-button">{{ next_button_text }}
                         </router-link>
                     </transition>
                 </div>
@@ -29,48 +29,16 @@
                     </button>
                 </div>
             </div>
-            <div class="question">
 
 
-            </div>
-
-            <!--            <h1>Вопрос №{{ question_number + 1 }} / {{ questions.length }}</h1>-->
-
-            <!--            <p class="question-page__question">-->
-            <!--                {{ question.text }}-->
-            <!--            </p>-->
-
-            <!--            <div class="question-page__variants">-->
-            <!--                <button :disabled="answer_text" @click="selectVariant(key, value)"-->
-            <!--                        v-for="(value, key) in question.variants" class="question-button"-->
-            <!--                        :class="question.proper === key?'success':'wrong'">-->
-            <!--                    {{ value.title }}-->
-            <!--                </button>-->
-            <!--            </div>-->
-
-            <!--            <transition name="answer-text-transition">-->
-            <!--                <p v-if="answer_text" class="question-page__answer-text">{{ answer_text }}</p>-->
-            <!--            </transition>-->
-            <!--            <transition name="answer-text-transition">-->
-            <!--                <router-link v-if="show_next_button" :to="next_button_url" type="button"-->
-            <!--                             class="btn btn-primary">{{ next_button_text }}-->
-            <!--                </router-link>-->
-            <!--            </transition>-->
         </div>
-        <!--        <div v-if="question.image" class="question-page__image-wrapper">-->
-        <!--            <transition name="answer-image-transition" mode="out-in">-->
-        <!--                <img v-if="!answer_text" src="@/assets/images/2-crop.png" alt="Картинка вопроса"-->
-        <!--                     class="question-page__image question-page__image_crop">-->
-        <!--                <img v-else src="@/assets/images/2-full.jpg" alt="Полная картинка вопроса"-->
-        <!--                     class="question-page__image question-page__image_crop">-->
-        <!--            </transition>-->
-        <!--        </div>-->
     </main>
 </template>
 
 <style lang="scss">
 $success-color: forestgreen;
 $wrong-color: darkred;
+$button-base-color: #B91D42;
 span{
     &.wrong{
         color: $wrong-color;
@@ -98,7 +66,7 @@ span{
     }
 
     &__content {
-        background-color: white;
+        //background-color: white;
         z-index: 10;
         display: flex;
         flex-direction: column;
@@ -143,18 +111,18 @@ span{
     font-size: 24px;
     line-height: 31px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 5vh;
 }
 
 .buttons {
     min-width: 400px;
     width: max-content;
-    max-width: 600px;
+    max-width: 457px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 5px;
+    gap: 9px;
 }
 
 .content {
@@ -162,6 +130,10 @@ span{
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    padding: 0 100px;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .question-place {
@@ -170,29 +142,44 @@ span{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 400px;
-    width: auto;
-    max-width: 600px;
-    margin: 0 50px;
+
+    width:650px;
+    margin: 0 auto;
     height: max-content;
+    line-height: 120%;
+}
+.question-answer{
+    border-radius: 10px;
+    padding: 10px;
+
+    background-color: rgba(255, 255, 255, 0.8);
+
 }
 
 .question-button {
     background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #B91D42;
+    color: $button-base-color !important;
+    border: 2px solid $button-base-color;
     border-radius: 60px;
-    height: 45px;
+    min-height: 45px;
+    padding: 5px;
     cursor: pointer;
     transition: .2s;
+    word-break: break-word;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 
     &.success {
-        color: white;
+        color: white !important;
         border-color: $success-color;
         background-color: $success-color;
     }
 
     &.wrong {
-        color: white;
+        color: white !important;
         border-color: $wrong-color;
         background-color: $wrong-color;
     }
@@ -208,9 +195,10 @@ span{
 
 .question-answer-button{
     position: absolute;
-    top:calc(100% + 20px);
-    left:50%;
-    transform: translateX(-50%);
+    top: calc(100% + 20px);
+    margin: 0 auto;
+    padding: 0 15px;
+    text-decoration: none !important;
 }
 </style>
 
@@ -234,7 +222,6 @@ else if ($route.params.id > questions.length) $router.push(`/question/${question
 const question_number = $route.params.id - 1;
 console.log('index, ', question_number);
 const question = questions[question_number];
-const question_image = computed(() => answer_text.value ? question.full_image : question.image);
 
 const next_button_text = computed(() => +$route.params.id >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
 const next_button_url = computed(() => +$route.params.id >= questions.length ? `/result` : `/question/${+$route.params.id + 1}`)
