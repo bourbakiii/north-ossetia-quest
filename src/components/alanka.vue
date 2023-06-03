@@ -1057,10 +1057,12 @@ const hello_animation_time = ref('3s');
 let animation_timeout = null;
 
 function animateHello() {
+    if(animation_timeout!=null) return;
   svgDOM.value.querySelectorAll('.hello-animation').forEach(el => el.beginElement());
   svgDOM.value.unpauseAnimations();
   clearTimeout(animation_timeout);
   animation_timeout = setTimeout(() => {
+      animation_timeout = null;
     console.log("Animation stop");
     svgDOM.value.pauseAnimations();
   }, 3000)
