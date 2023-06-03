@@ -7,17 +7,21 @@
                 {{ $route.params.id }} / {{ questions.length }}
             </p>
             <div class="content">
-                    <div class="question-place">
+                <div class="question-place">
+                    <div class="question-text">
                         <transition name="answer-text-transition" mode="out-in">
-                            <p v-if="answer_text" class="question-page__answer">{{ answer_text }}</p>
+                            <p v-if="answer_text" class="question-page__answer">
+                                <span :class="is_success?'success':'wrong'">{{is_success?'Верно! ':'Неверно. '}}</span>
+                                {{ answer_text }}</p>
                             <p v-else class="question-page__answer">{{ question.text }}</p>
                         </transition>
-                        <transition name="answer-text-transition">
-                            <router-link v-if="show_next_button" :to="next_button_url" type="button"
-                                         class="btn btn-primary">{{ next_button_text }}
-                            </router-link>
-                        </transition>
                     </div>
+                    <transition name="answer-text-transition">
+                        <router-link v-if="show_next_button" :to="next_button_url" type="button"
+                                     class="btn btn-primary question-answer-button">{{ next_button_text }}
+                        </router-link>
+                    </transition>
+                </div>
                 <div class="buttons">
                     <button class="question-button" :class="answer_text?question.proper === key?'success':'wrong':''"
                             :disabled="answer_text" @click="selectVariant(key,value)"
@@ -65,7 +69,16 @@
 </template>
 
 <style lang="scss">
-
+$success-color: forestgreen;
+$wrong-color: darkred;
+span{
+    &.wrong{
+        color: $wrong-color;
+    }
+    &.success{
+        color: $success-color;
+    }
+}
 
 .question-page {
     display: flex;
@@ -130,11 +143,10 @@
     font-size: 24px;
     line-height: 31px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .buttons {
-
     min-width: 400px;
     width: max-content;
     max-width: 600px;
@@ -144,22 +156,25 @@
     justify-content: center;
     gap: 5px;
 }
-.content{
+
+.content {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     flex-direction: row;
 }
-.question-place
-{
+
+.question-place {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 400px;
     min-width: 400px;
     width: auto;
     max-width: 600px;
+    margin: 0 50px;
+    height: max-content;
 }
 
 .question-button {
@@ -171,14 +186,15 @@
     transition: .2s;
 
     &.success {
-        background-color: forestgreen;
         color: white;
-        border-color: forestgreen;
+        border-color: $success-color;
+        background-color: $success-color;
     }
 
     &.wrong {
-        background-color: darkred;
         color: white;
+        border-color: $wrong-color;
+        background-color: $wrong-color;
     }
 
     &:disabled {
@@ -188,6 +204,13 @@
     &:not(&:disabled):hover {
         transform: scale(1.05);
     }
+}
+
+.question-answer-button{
+    position: absolute;
+    top:calc(100% + 20px);
+    left:50%;
+    transform: translateX(-50%);
 }
 </style>
 
@@ -203,6 +226,7 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.i
 
 const {questions} = useQuestionsStore();
 const {addPoint} = useProgressStore();
+const is_success = ref(false);
 if ($route.params.id <= 0) $router.push("/question/1")
 else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
 
@@ -217,7 +241,7 @@ const next_button_url = computed(() => +$route.params.id >= questions.length ? `
 const answer_text = ref(null);
 
 const show_next_button = ref(false);
-const show_next_button_delay = 1500;
+const show_next_button_delay = 2500;
 
 function selectVariant(key, value) {
     answer_text.value = value.answer;
@@ -225,6 +249,7 @@ function selectVariant(key, value) {
     setTimeout(() => show_next_button.value = true, show_next_button_delay);
 
     if (question.proper !== key) return console.error('Wrong');
+    is_success.value =  true;
     addPoint();
 }
 </script>
