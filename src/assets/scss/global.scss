@@ -16,3 +16,41 @@ html,body, #app{
   margin: 0 auto;
   height: 100%;
 }
+
+
+.base-button {
+    background: rgba(255, 255, 255, 0.8);
+    color: $button-base-color !important;
+    border: 2px solid $button-base-color;
+    border-radius: 60px;
+    min-height: 45px;
+    padding: 5px;
+    cursor: pointer;
+    transition: .2s;
+    word-break: break-word;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &.success {
+        color: white !important;
+        border-color: $success-color;
+        background-color: $success-color;
+    }
+
+    &.wrong {
+        color: white !important;
+        border-color: $wrong-color;
+        background-color: $wrong-color;
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+
+    &:not(&:disabled):hover {
+        transform: scale(1.05);
+    }
+}

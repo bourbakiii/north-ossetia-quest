@@ -1,8 +1,9 @@
 <template>
-  <svg @click="animateHello" ref="svgDOM" @mouseup="" @mousedown="animateHello" xmlns="http://www.w3.org/2000/svg"
+<!--    375 30 400 1000-->
+  <svg @click="animateHello" ref="svgDOM" xmlns="http://www.w3.org/2000/svg"
        xmlns:xlink="http://www.w3.org/1999/xlink"
-       preserveAspectRatio="xMidYMid meet" width="1080" height="1080" viewBox="0 0 1080 1080"
-       style="width:100%;height:100%">
+       preserveAspectRatio="xMidYMid meet" viewBox="375 30 550 1000"
+       >
     <defs>
       <animateMotion class="hello-animation" repeatCount="1" :dur="hello_animation_time" begin="0s"
                      xlink:href="#_R_G_L_28_G" fill="freeze"

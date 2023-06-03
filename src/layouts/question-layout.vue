@@ -1,7 +1,7 @@
 <template>
     <div class="layout question-layout">
         <router-link to="/" class="question-layout__main-link main-link">
-            <icon class="main-link__icon" name="arrow-back"/>
+            <icon class="main-link__icon" name="home"/>
             <p class="main-link__text">на главную</p>
         </router-link>
         <slot class="page" name="page-render">Кажется, что-то пошло не так...</slot>
@@ -18,6 +18,10 @@ import Icon from "@/components/icon.vue";
     max-width: 100vw;
     max-height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .question-page {
@@ -26,21 +30,18 @@ import Icon from "@/components/icon.vue";
 
 .main-link {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 10px;
     padding: 0;
     color: black;
     transition: .25s;
     text-decoration: none;
+    z-index: 1000;
 
     &:hover {
         gap: 6px;
     }
 
-    &__icon {
-        width: 20px;
-        height: 13px;
-    }
 
     &__text {
         font-size: 10px

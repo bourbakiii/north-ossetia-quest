@@ -18,12 +18,12 @@
                     </div>
                     <transition name="answer-text-transition">
                         <router-link v-if="show_next_button" :to="next_button_url" type="button"
-                                     class="question-button question-answer-button">{{ next_button_text }}
+                                     class="base-button question-answer-button">{{ next_button_text }}
                         </router-link>
                     </transition>
                 </div>
                 <div class="buttons">
-                    <button class="question-button" :class="answer_text?question.proper === key?'success':'wrong':''"
+                    <button class="base-button" :class="answer_text?question.proper === key?'success':'wrong':''"
                             :disabled="answer_text" @click="selectVariant(key,value)"
                             v-for="(value, key) in question.variants">{{ value.title }}
                     </button>
@@ -36,9 +36,7 @@
 </template>
 
 <style lang="scss">
-$success-color: forestgreen;
-$wrong-color: darkred;
-$button-base-color: #B91D42;
+
 span{
     &.wrong{
         color: $wrong-color;
@@ -66,44 +64,14 @@ span{
     }
 
     &__content {
-        //background-color: white;
         z-index: 10;
         display: flex;
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         justify-content: flex-start;
+        padding: 0 60px;
     }
-
-    //
-    //    &__variants {
-    //        display: flex;
-    //        flex-direction: column;
-    //        justify-content: flex-start;
-    //        align-items: stretch;
-    //        gap: 5px;
-    //    }
-    //
-    //    &__image-wrapper {
-    //        width: 300px;
-    //        max-height: 100%;
-    //        z-index: 10;
-    //    }
-    //
-    //    &__image {
-    //        width: 100%;
-    //        height: auto;
-    //        //object-fit:cover;
-    //    }
 }
-
-//
-//.variant-button {
-//    text-align: left;
-//    word-break: keep-all;
-//    white-space: normal;
-//    font-size: 13px;
-//    text-overflow: ellipsis;
-//}
 
 .question-info {
     font-style: normal;
@@ -111,7 +79,7 @@ span{
     font-size: 24px;
     line-height: 31px;
     text-align: center;
-    margin-bottom: 5vh;
+    margin-bottom: 50px;
 }
 
 .buttons {
@@ -130,10 +98,8 @@ span{
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    padding: 0 100px;
     gap: 40px;
     max-width: 1440px;
-    margin: 0 auto;
 }
 
 .question-place {
@@ -142,57 +108,16 @@ span{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     width:650px;
     margin: 0 auto;
     height: max-content;
     line-height: 120%;
 }
-.question-answer{
+.question-answer {
     border-radius: 10px;
     padding: 10px;
-
     background-color: rgba(255, 255, 255, 0.8);
-
 }
-
-.question-button {
-    background: rgba(255, 255, 255, 0.8);
-    color: $button-base-color !important;
-    border: 2px solid $button-base-color;
-    border-radius: 60px;
-    min-height: 45px;
-    padding: 5px;
-    cursor: pointer;
-    transition: .2s;
-    word-break: break-word;
-    white-space: normal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-    &.success {
-        color: white !important;
-        border-color: $success-color;
-        background-color: $success-color;
-    }
-
-    &.wrong {
-        color: white !important;
-        border-color: $wrong-color;
-        background-color: $wrong-color;
-    }
-
-    &:disabled {
-        cursor: default;
-    }
-
-    &:not(&:disabled):hover {
-        transform: scale(1.05);
-    }
-}
-
 .question-answer-button{
     position: absolute;
     top: calc(100% + 20px);
