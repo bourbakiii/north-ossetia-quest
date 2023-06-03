@@ -8,7 +8,6 @@ const routes = [
     },
     {
         path: '/question/:id',
-        meta: {layout: 'question-layout'},
         component: () => import('@/Pages/Question.vue')
     },
     {

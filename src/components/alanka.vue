@@ -1046,15 +1046,20 @@
 </template>
 
 <script setup>
-
 import {nextTick, onBeforeMount, onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
-const timings = {
-  hello_animation: '3',
-}
-const hello_animation_time = ref('3s');
+const hello_animation_time = ref('4s');
 let animation_timeout = null;
+
+onMounted(()=>{
+    setTimeout(()=>{
+
+    svgDOM.value.pauseAnimations()
+        setTimeout(animateHello,1000);
+    });
+
+});
 
 function animateHello() {
     if(animation_timeout!=null) return;
@@ -1065,7 +1070,7 @@ function animateHello() {
       animation_timeout = null;
     console.log("Animation stop");
     svgDOM.value.pauseAnimations();
-  }, 3000)
+  }, 4000)
 }
 </script>
 

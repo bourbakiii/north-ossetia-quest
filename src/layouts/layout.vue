@@ -10,8 +10,8 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-11.svg`, import.m
 </script>
 <style lang="scss">
 .empty-layout{
+    padding: 20px;
     &__background{
-
         position: fixed;
         top: 0;
         left: 0;

@@ -1,22 +1,21 @@
 <template>
-  <main  class="page index-page">
-<!--      <img :src="image_url" alt="Background" class="index-page__background">-->
-      <div class="character-wrapper">
+    <main class="page index-page">
+        <!--      <img :src="image_url" alt="Background" class="index-page__background">-->
+        <div class="character-wrapper">
 
-          <alanka class="svg-character"/>
-          <div class="character-cloud">
-              Привет, я Аланка! <br> Давайте проверим, что вы знаете о Северной Осетии?<br>
-              Ответьте правильно минимум на 7 вопросов и получите сувенир!
-          </div>
-      </div>
-    <div class="index-page__content">
-      <h1>ИГРА «ВКЛЮЧИСЬ В ОСЕТИЮ»</h1>
-      <router-link class="base-button start-button" to="/question/1">Начать тест</router-link>
-    </div>
+            <alanka class="svg-character"/>
+            <div class="character-cloud">
+                Привет, я Аланка! <br> Давайте проверим, что вы знаете о Северной Осетии?<br>
+                Ответьте правильно минимум на 7 вопросов и получите сувенир!
+            </div>
+        </div>
+        <div class="index-page__content">
+            <h1>ИГРА <br/> «ВКЛЮЧИСЬ В ОСЕТИЮ»</h1>
+            <router-link class="base-button start-button" to="/question/1">Начать тест</router-link>
+        </div>
 
 
-
-  </main>
+    </main>
 </template>
 
 <script setup>
@@ -26,13 +25,14 @@ import Alanka from "@/components/alanka.vue";
 
 <style lang="scss" scoped>
 .index-page {
-  height: 100%;
-  padding: 50px;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  position: relative;
-    &__background{
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+
+    &__background {
 
         position: fixed;
         top: 0;
@@ -45,34 +45,40 @@ import Alanka from "@/components/alanka.vue";
     }
 
 
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 15px;
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
 
-  }
+    }
 }
-.start-button{
+
+.start-button {
     text-decoration: none;
     padding: 0 10px;
 }
-h1{
-    font-size:20px;
+
+h1 {
+    font-size: 32px;
     font-weight: bold;
+    text-align: center;
 }
-.character-wrapper{
-    height:100%;
+
+.character-wrapper {
+    height: 100%;
     position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+
 }
-.character-cloud{
+
+.character-cloud {
     position: absolute;
-    top:50px;
-    left:100%;
+    top: 30px;
+    left: 100%;
     transform: translateX(-20%);
     background-color: rgba(250, 250, 250);
     border-radius: 10px;
@@ -80,25 +86,26 @@ h1{
     white-space: nowrap;
     word-break: keep-all;
     z-index: 3;
-    filter: drop-shadow(0 0  1px black);
+    filter: drop-shadow(0 0 1px black);
 
-    &::after{
+    &::after {
         position: absolute;
         content: '';
 
-        left:0;
-        top:100%;
-        width:30px;
-        height:30px;
-           background-color: rgba(250, 250, 250);
-    z-index:-1;
-        filter: drop-shadow(0 0  1px black);
+        left: 0;
+        top: 100%;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(250, 250, 250);
+        z-index: -1;
+        filter: drop-shadow(0 0 1px black);
 
-        clip-path:polygon(30% 0, 0% 100%, 100% 0);
+        clip-path: polygon(30% 0, 0% 100%, 100% 0);
     }
 }
-.svg-character{
-    width:320px;
+
+.svg-character {
+    width: 320px;
     bottom: 0;
     z-index: 2;
 }

@@ -3,6 +3,10 @@
         <img :src="image_url" alt="Background image" class="question-page__background"/>
 
         <div class="question-page__content">
+            <router-link to="/" class="question-layout__main-link main-link">
+                <icon class="main-link__icon" name="home"/>
+                <p class="main-link__text">на главную</p>
+            </router-link>
             <p class="question-info">
                 {{ $route.params.id }} / {{ questions.length }}
             </p>
@@ -34,8 +38,23 @@
         </div>
     </main>
 </template>
-
 <style lang="scss">
+.main-link {
+    width:100%;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+    color: black !important;
+    transition: .25s;
+    text-decoration: none !important;
+    z-index: 1000;
+    margin-bottom: 10px;
+    &__text {
+        font-size: 10px
+    }
+}
 
 span{
     &.wrong{
@@ -91,6 +110,7 @@ span{
     align-items: stretch;
     justify-content: center;
     gap: 9px;
+    padding: 18px 0;
 }
 
 .content {
@@ -128,6 +148,8 @@ span{
 </style>
 
 <script setup>
+import icon from "@/components/icon.vue";
+
 import {computed, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {useQuestionsStore} from "@/stores/questions";
