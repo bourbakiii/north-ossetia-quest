@@ -78,3 +78,22 @@ html,body, #app{
         transform: scale(1.05);
     }
 }
+.main-button {
+    padding:calc(20 / 1920 * 100vw) calc(30 / 1920 * 100vw);
+
+    font-family: 'Futura PT', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(40 / 1920 * 100vw);
+    line-height: 135%;
+    text-align: center;
+    text-transform: uppercase;
+    border: 17px solid #FFEC00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000 !important;
+    background-color: white;
+    border-radius: 90px;
+    text-decoration: none !important;
+}

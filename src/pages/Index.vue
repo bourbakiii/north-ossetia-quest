@@ -1,19 +1,25 @@
 <template>
     <main class="page index-page">
-              <img :src="image_url" alt="Background" class="index-page__background">
+              <img :src="image_url " alt="Background" class="index-page__background">
+        <icon name='logotype' class="logotype" />
+        <router-link to="/" class="index-page__main-link main-link">
+            <icon class="main-link__icon" name="home"/>
+            <p class="main-link__text">на главную</p>
+        </router-link>
+        <div class="character-absoluter">
         <div class="character-wrapper">
-
-            <alanka class="svg-character"/>
             <div class="character-cloud">
-                <icon name=""
-                Привет, я Аланка! <br> Давайте проверим, что вы знаете о Северной Осетии?<br>
-                Ответьте правильно минимум на 7 вопросов и получите сувенир!
+                <icon class="back-bubble" name="back-bubble"/>
+                <icon class="front-bubble" name="front-bubble"/>
+                <p class="character-phrase">
+                Привет, я Аланка! Давайте проверим, <br/> что вы знаете о Северной Осетии?<br>
+                Ответьте правильно минимум на 7 вопросов <br/> и получите сувенир!
+                </p>
             </div>
+            <alanka class="svg-character"/>
         </div>
-        <div class="index-page__content">
-            <h1>ИГРА <br/> «ВКЛЮЧИСЬ В ОСЕТИЮ»</h1>
-            <router-link class="base-button start-button" to="/question/1">Начать тест</router-link>
         </div>
+        <router-link class="index-main-button main-button" to="/question/1">Начать игру</router-link>
 
 
     </main>
@@ -26,16 +32,71 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 </script>
 
 <style lang="scss" scoped>
+.main-link {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+    color: black !important;
+    transition: .25s;
+    text-decoration: none !important;
+    z-index: 1000;
+    margin-bottom: 10px;
+    &__text {
+        font-family: 'Futura PT',sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 14px;
+        height:min-content;
+
+        width: max-content;
+    }
+}
+.logotype{
+    position: absolute;
+    top:100px;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+.character-cloud{
+    position: absolute;
+    top:0;
+    right:100%;
+}
+.back-bubble{
+    position: absolute;
+    top:-26px;
+    left:-20px;
+    z-index: -1;
+}
+.character-phrase{
+    position: absolute;
+    left: 47%;
+    top:58%;
+    transform: rotate(4.52deg) translateX(-50%) translateY(-50%);
+    width:85%;
+    text-align: center;
+    font-family: 'Futura PT',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+}
+
 .index-page {
     height: 100%;
     padding: 50px;
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     position: relative;
 
     &__background {
-
         position: fixed;
         top: 0;
         left: 0;
@@ -46,15 +107,6 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
         z-index: -1;
     }
 
-
-    &__content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 15px;
-
-    }
 }
 
 .start-button {
@@ -67,57 +119,38 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
-
-.character-wrapper {
+.character-absoluter{
     position: absolute;
     right:calc(300/1920 * 100vw);
     bottom:calc(30/1080 * 100vh);
+    z-index: 10;
+
+    @media screen and (max-width: 1800px) {
+        right:calc(130/1920 * 100vw);
+        bottom:calc(40/1080 * 100vh);
+    }
+}
+
+.character-wrapper {
+    position: relative;
     height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    z-index: 10;
-    @media screen and (max-width: 1800px) {
-        right:calc(130/1920 * 100vw);
-        bottom:calc(40/1080 * 100vh);
 
-
-    }
 }
 
-//.character-cloud {
-//    position: absolute;
-//    top: 30px;
-//    left: 100%;
-//    transform: translateX(-20%);
-//    background-color: rgba(250, 250, 250);
-//    border-radius: 10px;
-//    padding: 10px;
-//    white-space: nowrap;
-//    word-break: keep-all;
-//    z-index: 3;
-//    filter: drop-shadow(0 0 1px black);
-//
-//    &::after {
-//        position: absolute;
-//        content: '';
-//
-//        left: 0;
-//        top: 100%;
-//        width: 30px;
-//        height: 30px;
-//        background-color: rgba(250, 250, 250);
-//        z-index: -1;
-//        filter: drop-shadow(0 0 1px black);
-//
-//        clip-path: polygon(30% 0, 0% 100%, 100% 0);
-//    }
-//}
-
 .svg-character {
-    width: 320px;
+    width: calc(320 / 1920 * 100vw);
     bottom: 0;
     z-index: 2;
+}
+.index-main-button{
+    position: absolute;
+    left:50%;
+    bottom: calc(150/1080 * 100vh);
+    transform: translate(-50%, -50%);
+    height: max-content;
 }
 
 </style>

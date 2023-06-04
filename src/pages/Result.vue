@@ -13,7 +13,7 @@
           <img class="result-text__background" src="../assets/images/result-bubble.svg" alt="Bubble">
       <p>{{result.text}}</p>
       </div>
-    <router-link class="main-button" to="/">Сыграть еще раз</router-link>
+    <router-link class="result-main-button main-button" to="/">Сыграть еще раз</router-link>
       </div>
   </main>
 </template>
@@ -130,23 +130,8 @@ p{
     object-fit: cover;
 
 }
-.main-button{
+.result-main-button{
     margin-top: calc(60 / 1920 * 100vw);
-    text-decoration: none;
-    padding:calc(20 / 1920 * 100vw) calc(30 / 1920 * 100vw);
-    font-family: 'Futura PT',sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size:    calc(40 / 1920 * 100vw);
-    line-height: 135%;
-    text-align: center;
-    text-transform: uppercase;
-    border: 17px solid #FFEC00;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000000 !important;
-    background-color: white;
-    border-radius: 90px;
+
 }
 </style>
