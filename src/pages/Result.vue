@@ -88,40 +88,37 @@ flex-grow: 1;
     }
 }
 h1,h2 {
-    margin-bottom: 25px;
+    margin-bottom:  calc(35 / 1920 * 100vw);
 
     font-family: 'Neskid',sans-serif;
     font-weight: normal;
     font-style: normal;
-    font-size: 100px;
+    font-size: calc(100 / 1920 * 100vw);
     line-height: 85%;
-    @media screen and (max-width: 1600px) {
-        font-size: 80px;
-    }
+    color: #484646;
+
 }
 
 p{
     font-family: 'Futura PT',sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
+    font-size:    calc(36 / 1920 * 100vw);
     line-height: 124%;
     text-align: center;
     width:100%;
-    height:100%;
-    @media screen and (max-width: 1600px) {
-        font-size: 30px;
-    }
+
 }
 .result-text__wrapper{
     margin-top:20px;
     position: relative;
-    width: 1230px;
-    height: max-content;
+    width: calc(1230 / 1920 * 100vw);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 75px;
+    height: calc(313 / 1920 * 100vw);
+    color: #484646;
 }
 .result-text__background{
     position: absolute;
@@ -134,16 +131,14 @@ p{
 
 }
 .main-button{
-    margin-top: 40px;
-    padding: 0 15px;
+    margin-top: calc(60 / 1920 * 100vw);
     text-decoration: none;
-    height: 157px;
-    width: 512px;
+    padding:calc(20 / 1920 * 100vw) calc(30 / 1920 * 100vw);
     font-family: 'Futura PT',sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
-    line-height: 56px;
+    font-size:    calc(40 / 1920 * 100vw);
+    line-height: 135%;
     text-align: center;
     text-transform: uppercase;
     border: 17px solid #FFEC00;
