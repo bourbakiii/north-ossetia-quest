@@ -1,19 +1,33 @@
 <template>
   <main class="page result-page">
-    <h1>{{result.title}} ({{points}} / {{question_length}})</h1>
+
+      <img :src="image_url" alt="Background image" class="result-page__background"/>
+      <router-link to="/" class="result-page__main-link main-link">
+          <icon class="main-link__icon" name="home"/>
+          <p class="main-link__text">на главную</p>
+      </router-link>
+      <div class="result-page__content">
+    <h2>{{points}}/{{question_length}}</h2>
+    <h1>{{result.title}}</h1>
+      <div class="result-text__wrapper">
+          <img class="result-text__background" src="../assets/images/result-bubble.svg" alt="Bubble">
       <p>{{result.text}}</p>
-    <router-link class="base-button main-button" to="/">На главную</router-link>
+      </div>
+    <router-link class="main-button" to="/">Сыграть еще раз</router-link>
+      </div>
   </main>
 </template>
 
 <script setup>
 import {useProgressStore} from "@/stores/progress.js";
 import {useQuestionsStore} from "@/stores/questions.js";
+import icon from "@/components/icon.vue";
+const image_url = new URL(`/src/assets/images/backgrounds/back-result.svg`, import.meta.url);
 
 const {points} = useProgressStore();
 function getResults(points){
-    if(points.value<=3) return {title:'Турист', text:'О Северной Осетии вы знаете не слишком много. Мы рады, что наша игра познакомила вас поближе с этой прекрасной республикой. Осетия знаменита не только удивительно живописными пейзажами и культурными памятниками, но и большим гостеприимством. Обязательно посетите этот уютный уголок России и Включайтесь в Осетию!'}
-    if(points.value<=6) return {title:'Почтенный гость осетина', text:'Вы кое-что знаете о Северной Осетии и, скорее всего, бывали там. Уверены, что узнав из нашей игры ещё больше об этой прекрасной республике, вы захотите побывать там снова. Тем более, что Осетия славится не только живописными пейзажами и культурными памятниками, но и большим гостеприимством. Так что не откладывайте поездку и Включайтесь в Осетию!'}
+    if(points<=3) return {title:'Турист', text:'О Северной Осетии вы знаете не слишком много. Мы рады, что наша игра познакомила вас поближе с этой прекрасной республикой. Осетия знаменита не только удивительно живописными пейзажами и культурными памятниками, но и большим гостеприимством. Обязательно посетите этот уютный уголок России и Включайтесь в Осетию!'}
+    if(points<=6) return {title:'Почтенный гость осетина', text:'Вы кое-что знаете о Северной Осетии и, скорее всего, бывали там. Уверены, что узнав из нашей игры ещё больше об этой прекрасной республике, вы захотите побывать там снова. Тем более, что Осетия славится не только живописными пейзажами и культурными памятниками, но и большим гостеприимством. Так что не откладывайте поездку и Включайтесь в Осетию!'}
     else return {title:'Истинный горец', text:'Уæлахизимæ дын арфæ кæнæм! Вы прекрасно знаете Северную Осетию и, возможно, даже поняли, что первой фразой мы поздравили вас по-осетински с победой в игре. Вам не понаслышке знакомы живописные пейзажи республики и разновидности начинок осетинских пирогов. Приезжайте почаще в этот уютный и гостеприимный уголок России, берите с собой друзей и все вместе Включайтесь в Осетию!'}
 }
 const result = getResults(points);
@@ -21,27 +35,123 @@ const question_length = useQuestionsStore().questions.length;
 </script>
 
 <style lang="scss" scoped>
+.main-link {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+    color: black !important;
+    transition: .25s;
+    text-decoration: none !important;
+    z-index: 1000;
+    margin-bottom: 10px;
+    &__text {
+        font-family: 'Futura PT',sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 14px;
+        height:min-content;
+
+        width: max-content;
+    }
+}
+
 .result-page {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   flex-direction: column;
-  gap: 20px;
+    flex-shrink: 0;
   height: 100%;
     width:100%;
-    max-width: 600px;
-    margin: 0 auto;
+    &__content{
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 1237px;
+flex-grow: 1;
+    }
+    &__background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+        z-index: -1;
+    }
 }
-h1{
-    font-size: 32px;
-    font-weight: bold;
+h1,h2 {
+    margin-bottom: 25px;
+
+    font-family: 'Neskid',sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100px;
+    line-height: 85%;
+    @media screen and (max-width: 1600px) {
+        font-size: 80px;
+    }
 }
+
 p{
-    line-height: 120%;
-    font-size: 20px;
+    font-family: 'Futura PT',sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 124%;
+    text-align: center;
+    width:100%;
+    height:100%;
+    @media screen and (max-width: 1600px) {
+        font-size: 30px;
+    }
+}
+.result-text__wrapper{
+    margin-top:20px;
+    position: relative;
+    width: 1230px;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 75px;
+}
+.result-text__background{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    width: 100%;
+    object-fit: cover;
+
 }
 .main-button{
+    margin-top: 40px;
     padding: 0 15px;
     text-decoration: none;
+    height: 157px;
+    width: 512px;
+    font-family: 'Futura PT',sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 17px solid #FFEC00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000 !important;
+    background-color: white;
+    border-radius: 90px;
 }
 </style>
