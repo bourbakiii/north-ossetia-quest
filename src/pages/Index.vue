@@ -1,10 +1,11 @@
 <template>
     <main class="page index-page">
-        <!--      <img :src="image_url" alt="Background" class="index-page__background">-->
+              <img :src="image_url" alt="Background" class="index-page__background">
         <div class="character-wrapper">
 
             <alanka class="svg-character"/>
             <div class="character-cloud">
+                <icon name=""
                 Привет, я Аланка! <br> Давайте проверим, что вы знаете о Северной Осетии?<br>
                 Ответьте правильно минимум на 7 вопросов и получите сувенир!
             </div>
@@ -20,7 +21,8 @@
 
 <script setup>
 import Alanka from "@/components/alanka.vue";
-// const image_url = new URL(`/src/assets/images/backgrounds/back-7.svg`, import.meta.url);
+import Icon from "@/components/icon.vue";
+const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.meta.url);
 </script>
 
 <style lang="scss" scoped>
@@ -67,42 +69,50 @@ h1 {
 }
 
 .character-wrapper {
+    position: absolute;
+    right:calc(300/1920 * 100vw);
+    bottom:calc(30/1080 * 100vh);
     height: 100%;
-    position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    z-index: 10;
+    @media screen and (max-width: 1800px) {
+        right:calc(130/1920 * 100vw);
+        bottom:calc(40/1080 * 100vh);
 
-}
 
-.character-cloud {
-    position: absolute;
-    top: 30px;
-    left: 100%;
-    transform: translateX(-20%);
-    background-color: rgba(250, 250, 250);
-    border-radius: 10px;
-    padding: 10px;
-    white-space: nowrap;
-    word-break: keep-all;
-    z-index: 3;
-    filter: drop-shadow(0 0 1px black);
-
-    &::after {
-        position: absolute;
-        content: '';
-
-        left: 0;
-        top: 100%;
-        width: 30px;
-        height: 30px;
-        background-color: rgba(250, 250, 250);
-        z-index: -1;
-        filter: drop-shadow(0 0 1px black);
-
-        clip-path: polygon(30% 0, 0% 100%, 100% 0);
     }
 }
+
+//.character-cloud {
+//    position: absolute;
+//    top: 30px;
+//    left: 100%;
+//    transform: translateX(-20%);
+//    background-color: rgba(250, 250, 250);
+//    border-radius: 10px;
+//    padding: 10px;
+//    white-space: nowrap;
+//    word-break: keep-all;
+//    z-index: 3;
+//    filter: drop-shadow(0 0 1px black);
+//
+//    &::after {
+//        position: absolute;
+//        content: '';
+//
+//        left: 0;
+//        top: 100%;
+//        width: 30px;
+//        height: 30px;
+//        background-color: rgba(250, 250, 250);
+//        z-index: -1;
+//        filter: drop-shadow(0 0 1px black);
+//
+//        clip-path: polygon(30% 0, 0% 100%, 100% 0);
+//    }
+//}
 
 .svg-character {
     width: 320px;
