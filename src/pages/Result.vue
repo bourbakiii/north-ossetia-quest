@@ -1,7 +1,7 @@
 <template>
   <main class="page result-page">
 
-      <img :src="image_url" alt="Background image" class="result-page__background"/>
+      <img :src="image_url" alt="" class="result-page__background"/>
       <go-home />
       <div class="result-page__content">
     <h2>{{points}}/{{question_length}}</h2>

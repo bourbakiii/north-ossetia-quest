@@ -1,6 +1,6 @@
 <template>
     <div class="layout empty-layout">
-        <img :src="image_url" alt="Background" class="empty-layout__background">
+        <img :src="image_url" alt="" class="empty-layout__background">
 
         <slot name="page-render">Кажется, что-то пошло не так...</slot>
     </div>

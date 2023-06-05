@@ -1,6 +1,6 @@
 <template>
     <main class="page index-page">
-              <img :src="image_url " alt="Background" class="index-page__background">
+              <img :src="image_url " alt="" class="index-page__background">
         <img src="../assets/images/logotype.png" alt="Logotype" class="logotype" />
         <go-home />
 

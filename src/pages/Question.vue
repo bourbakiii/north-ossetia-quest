@@ -1,6 +1,6 @@
 <template>
     <main class="page question-page">
-        <img :src="image_url" alt="Background image" class="question-page__background"/>
+        <img :src="image_url" alt="" class="question-page__background"/>
         <div class="question-page__content">
             <div class="top-row">
                 <go-home/>
