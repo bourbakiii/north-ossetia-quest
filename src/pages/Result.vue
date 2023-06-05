@@ -2,10 +2,7 @@
   <main class="page result-page">
 
       <img :src="image_url" alt="Background image" class="result-page__background"/>
-      <router-link to="/" class="result-page__main-link main-link">
-          <icon class="main-link__icon" name="home"/>
-          <p class="main-link__text">на главную</p>
-      </router-link>
+      <go-home />
       <div class="result-page__content">
     <h2>{{points}}/{{question_length}}</h2>
     <h1>{{result.title}}</h1>
@@ -35,29 +32,6 @@ const question_length = useQuestionsStore().questions.length;
 </script>
 
 <style lang="scss" scoped>
-.main-link {
-    width:100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 10px;
-    padding: 0;
-    color: black !important;
-    transition: .25s;
-    text-decoration: none !important;
-    z-index: 1000;
-    margin-bottom: 10px;
-    &__text {
-        font-family: 'Futura PT',sans-serif;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 24px;
-        line-height: 14px;
-        height:min-content;
-
-        width: max-content;
-    }
-}
 
 .result-page {
   display: flex;
@@ -96,6 +70,7 @@ h1,h2 {
     font-size: calc(100 / 1920 * 100vw);
     line-height: 85%;
     color: #484646;
+    text-align: center;
 
 }
 
@@ -107,7 +82,6 @@ p{
     line-height: 124%;
     text-align: center;
     width:100%;
-
 }
 .result-text__wrapper{
     margin-top:20px;

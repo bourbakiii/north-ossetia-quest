@@ -1,0 +1,32 @@
+<template>
+    <router-link to="/" class="main-link">
+        <icon class="main-link__icon" name="home"/>
+        <p class="main-link__text">на главную</p>
+    </router-link>
+</template>
+<script setup>
+import icon from "@/components/icon.vue";
+</script>
+<style lang="scss">
+.main-link {
+    width:max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+    color: black !important;
+    transition: .25s;
+    text-decoration: none !important;
+    z-index: 1000;
+    &__text {
+        font-family: 'Futura PT',sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: calc(24/1920 * 100vw);
+        line-height: 60%;
+        height:min-content;
+        width: max-content;
+    }
+}
+</style>

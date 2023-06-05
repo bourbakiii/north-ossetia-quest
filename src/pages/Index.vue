@@ -1,11 +1,9 @@
 <template>
     <main class="page index-page">
               <img :src="image_url " alt="Background" class="index-page__background">
-        <icon name='logotype' class="logotype" />
-        <router-link to="/" class="index-page__main-link main-link">
-            <icon class="main-link__icon" name="home"/>
-            <p class="main-link__text">на главную</p>
-        </router-link>
+        <img src="../assets/images/logotype.png" alt="Logotype" class="logotype" />
+        <go-home />
+
         <div class="character-absoluter">
         <div class="character-wrapper">
             <div class="character-cloud">
@@ -28,33 +26,11 @@
 <script setup>
 import Alanka from "@/components/alanka.vue";
 import Icon from "@/components/icon.vue";
+
 const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.meta.url);
 </script>
 
 <style lang="scss" scoped>
-.main-link {
-    width:100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 10px;
-    padding: 0;
-    color: black !important;
-    transition: .25s;
-    text-decoration: none !important;
-    z-index: 1000;
-    margin-bottom: 10px;
-    &__text {
-        font-family: 'Futura PT',sans-serif;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 24px;
-        line-height: 14px;
-        height:min-content;
-
-        width: max-content;
-    }
-}
 .logotype{
     position: absolute;
     top:100px;
@@ -89,7 +65,6 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 
 .index-page {
     height: 100%;
-    padding: 50px;
     display: flex;
     align-items: stretch;
     justify-content: flex-start;
