@@ -14,7 +14,7 @@
                 Ответьте правильно минимум на 7 вопросов <br/> и получите сувенир!
                 </p>
             </div>
-            <alanka class="svg-character"/>
+            <alanka-hello class="svg-character"/>
         </div>
         </div>
         <router-link class="index-main-button main-button" to="/question/1">Начать игру</router-link>
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import Alanka from "@/components/alanka.vue";
+import AlankaHello from "@/components/alanka/hello.vue";
 import Icon from "@/components/icon.vue";
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.meta.url);

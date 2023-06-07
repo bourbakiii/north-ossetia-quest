@@ -14,10 +14,6 @@ const routes = [
         path: '/result',
         component: () => import('@/Pages/Result.vue')
     },
-    {
-        path: '/test',
-        component: () => import('@/Pages/Test.vue')
-    }
 ];
 const router = createRouter({
     history: createWebHistory(),

@@ -1,3 +1,50 @@
+<script setup>
+import icon from "@/components/icon.vue";
+
+import {computed, ref} from "vue";
+import {useRoute, useRouter} from "vue-router";
+import {useQuestionsStore} from "@/stores/questions";
+import {useProgressStore} from "@/stores/progress";
+import ReactionsWrapper from "@/components/reactions-wrapper.vue";
+
+const reactions = ref(null);
+const $route = useRoute(), $router = useRouter();
+
+const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.id}.svg`, import.meta.url);
+
+const {questions} = useQuestionsStore();
+const {addPoint} = useProgressStore();
+const is_success = ref(false);
+if ($route.params.id <= 0) $router.push("/question/1")
+else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
+
+// const question_number = $route.params.id < 0 ? 0 : (($route.params.id > questions.length - 1) ? (+questions.length - 1) : +$route.params.id);
+const question_number = $route.params.id - 1;
+console.log('index, ', question_number);
+const question = questions[question_number];
+
+const next_button_text = computed(() => +$route.params.id >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
+const next_button_url = computed(() => +$route.params.id >= questions.length ? `/result` : `/question/${+$route.params.id + 1}`)
+const answer_text = ref(null);
+
+const show_next_button = ref(false);
+const show_next_button_delay = 2500;
+
+function selectVariant(key, value) {
+    answer_text.value = value.answer;
+
+    setTimeout(() => show_next_button.value = true, show_next_button_delay);
+
+    if (question.proper !== key) {
+        setTimeout(()=>reactions.value.animateSad(),1000);
+        return console.error('Wrong');
+    }
+    setTimeout(()=>reactions.value.animateFunny(),1000);
+    is_success.value = true;
+    addPoint();
+}
+</script>
+
 <template>
     <main class="page question-page">
         <img :src="image_url" alt="" class="question-page__background"/>
@@ -36,10 +83,17 @@
                 </div>
             </div>
         </div>
+        <reactions-wrapper ref="reactions" class="reactions-wrapper"/>
     </main>
 </template>
 <style lang="scss">
-
+.reactions-wrapper{
+    position: absolute;
+    z-index: 10;
+    bottom: -55px;
+    left:19%;
+    width:calc(250/1920 * 100vw);
+}
 span {
     &.wrong {
         color: $wrong-color;
@@ -147,43 +201,3 @@ span {
 }
 </style>
 
-<script setup>
-import icon from "@/components/icon.vue";
-
-import {computed, ref} from "vue";
-import {useRoute, useRouter} from "vue-router";
-import {useQuestionsStore} from "@/stores/questions";
-import {useProgressStore} from "@/stores/progress";
-
-const $route = useRoute(), $router = useRouter();
-
-const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.id}.svg`, import.meta.url);
-
-const {questions} = useQuestionsStore();
-const {addPoint} = useProgressStore();
-const is_success = ref(false);
-if ($route.params.id <= 0) $router.push("/question/1")
-else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
-
-// const question_number = $route.params.id < 0 ? 0 : (($route.params.id > questions.length - 1) ? (+questions.length - 1) : +$route.params.id);
-const question_number = $route.params.id - 1;
-console.log('index, ', question_number);
-const question = questions[question_number];
-
-const next_button_text = computed(() => +$route.params.id >= questions.length ? 'Посмотреть результат' : 'Следующий вопрос');
-const next_button_url = computed(() => +$route.params.id >= questions.length ? `/result` : `/question/${+$route.params.id + 1}`)
-const answer_text = ref(null);
-
-const show_next_button = ref(false);
-const show_next_button_delay = 2500;
-
-function selectVariant(key, value) {
-    answer_text.value = value.answer;
-
-    setTimeout(() => show_next_button.value = true, show_next_button_delay);
-
-    if (question.proper !== key) return console.error('Wrong');
-    is_success.value = true;
-    addPoint();
-}
-</script>
