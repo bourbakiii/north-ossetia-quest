@@ -80,7 +80,6 @@ span {
     position: relative;
     width: 100%;
     margin-bottom: calc(18 / 1080 * 100vh);
-
 }
 
 .question-info {
@@ -104,7 +103,6 @@ span {
     align-items: stretch;
     justify-content: center;
     gap: 9px;
-
 }
 
 .content {
@@ -116,19 +114,8 @@ span {
     width: 100%;
     padding: 0 calc(60 / 1920 * 100vw);
     margin-top: 10px;
-
 }
 
-.question-place {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 650px;
-    height: max-content;
-    line-height: 120%;
-}
 
 .question-answer {
     border-radius: 10px;
@@ -140,8 +127,16 @@ span {
 }
 
 .question-place {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 650px;
+    line-height: 120%;
     max-width: calc(800 / 1920 * 100vw);
     flex-grow: 1;
+    align-self:center;
 }
 
 .question-answer-button {

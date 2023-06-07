@@ -23,7 +23,7 @@ import icon from "@/components/icon.vue";
         font-family: 'Futura PT',sans-serif;
         font-style: normal;
         font-weight: 300;
-        font-size: calc(24/1920 * 100vw);
+        font-size: calc(20/1920 * 100vw);
         line-height: 60%;
         height:min-content;
         width: max-content;

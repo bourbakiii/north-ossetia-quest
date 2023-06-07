@@ -52,15 +52,16 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 .character-phrase{
     position: absolute;
     left: 47%;
-    top:58%;
-    transform: rotate(4.52deg) translateX(-50%) translateY(-50%);
+    top:50%;
+    transform: translateX(-50%) translateY(-50%);
     width:85%;
-    text-align: center;
     font-family: 'Futura PT',sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
-    line-height: 23px;
+    line-height: 26px;
+    text-align: center;
+
 }
 
 .index-page {
@@ -116,7 +117,7 @@ h1 {
 }
 
 .svg-character {
-    width: calc(320 / 1920 * 100vw);
+    width: calc(323 / 1920 * 100vw);
     bottom: 0;
     z-index: 2;
 }
