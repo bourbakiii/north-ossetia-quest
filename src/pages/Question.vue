@@ -91,7 +91,7 @@ span {
     font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: calc(24 / 1920 * 100vw);
+    font-size: calc(24 / 1920/$text-scale-coefficient * 100vw);
     line-height: 100%;
 }
 
@@ -122,7 +122,7 @@ span {
     font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(26 / 1920 * 100vw);
+    font-size: calc(26 / 1920/$text-scale-coefficient * 100vw);
     line-height: 137%;
 }
 

@@ -58,8 +58,8 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
     font-family: 'Futura PT',sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: calc(20/1920/$text-scale-coefficient * 100vw);
+    line-height: calc(130%);
     text-align: center;
 
 }
@@ -91,7 +91,7 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 }
 
 h1 {
-    font-size: 32px;
+    font-size: calc(32/1920/$text-scale-coefficient * 100vw);
     font-weight: bold;
     text-align: center;
 }

@@ -9,7 +9,7 @@ import icon from "@/components/icon.vue";
 </script>
 <style lang="scss">
 .main-link {
-    width:max-content;
+    width: max-content;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -19,13 +19,14 @@ import icon from "@/components/icon.vue";
     transition: .25s;
     text-decoration: none !important;
     z-index: 1000;
+
     &__text {
-        font-family: 'Futura PT',sans-serif;
+        font-family: 'Futura PT', sans-serif;
         font-style: normal;
         font-weight: 300;
-        font-size: calc(20/1920 * 100vw);
+        font-size: calc(20 / 1920 / 1.2 * 100vw);
         line-height: 60%;
-        height:min-content;
+        height: min-content;
         width: max-content;
     }
 }

@@ -65,7 +65,7 @@ html, body, #app {
     font-family: 'FuturaPT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(26 / 1920 * 100vw);
+    font-size: calc(26 / 1920 /$text-scale-coefficient * 100vw);
     line-height: 130%;
 
 
@@ -95,7 +95,7 @@ html, body, #app {
     font-family: 'FuturaPT', sans-serif;
     font-style: normal;
     font-weight: 900;
-    font-size: calc(40 / 1920 * 100vw);
+    font-size: calc(40 / 1920 /$text-scale-coefficient* 100vw);
     line-height: 135%;
     text-align: center;
     text-transform: uppercase;

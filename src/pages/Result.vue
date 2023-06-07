@@ -67,7 +67,7 @@ h1,h2 {
     font-family: 'Neskid',sans-serif;
     font-weight: normal;
     font-style: normal;
-    font-size: calc(100 / 1920 * 100vw);
+    font-size: calc(100 / 1920/$text-scale-coefficient * 100vw);
     line-height: 85%;
     color: #484646;
     text-align: center;
@@ -78,7 +78,7 @@ p{
     font-family: 'Futura PT',sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size:    calc(36 / 1920 * 100vw);
+    font-size:    calc(36 / 1920/$text-scale-coefficient * 100vw);
     line-height: 124%;
     text-align: center;
     width:100%;
