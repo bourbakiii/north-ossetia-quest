@@ -89,7 +89,7 @@ const alanka_positions = [
                 <div class="buttons">
                     <button class="base-button" :class="answer_text?question.proper === key?'success':'wrong':''"
                             :disabled="answer_text" @click="selectVariant(key,value)"
-                            v-for="(value, key) in question.variants">{{ value.title }}
+                            v-for="(value, key) in question.variants" v-html="value.title + '.'">
                     </button>
                 </div>
             </div>
