@@ -5,7 +5,7 @@ import AlankaFunny from "@/components/alanka/funny.vue";
 
 const __SAD__ = ref(null);
 const __FUNNY__ = ref(null);
-const is_sad = ref(true);
+const is_sad = ref(false);
 let animation_timeout = null;
 
 function animateSad() {

@@ -903,12 +903,18 @@ import {onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
 const duration = ref('2.86s');
-onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations()));
+// let animation_timeout = null;
+
+// onMounted(() => {
+    // setTimeout(() => svgDOM.value.pauseAnimations())
+// });
 
 function animate() {
-    console.log('ANIMATE SAD 2');
-    svgDOM.value.querySelectorAll('.sad-animation').forEach(el => el.beginElement());
-    svgDOM.value.unpauseAnimations();
+    // if(animation_timeout!=null) return;
+
+    // svgDOM.value.querySelectorAll('.sad-animation').forEach(el => el.beginElement());
+    // svgDOM.value.unpauseAnimations();
+
 }
 
 defineExpose({animate});

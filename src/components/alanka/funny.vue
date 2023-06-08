@@ -2,6 +2,7 @@
     <svg ref="svgDOM" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          preserveAspectRatio="xMidYMid meet" viewBox="378 35 400 1013"
     >
+
         <defs>
             <animateTransform class="funny-animation" repeatCount="1" :dur="duration" begin="0s"
                               xlink:href="#_R_G_L_26_G"
@@ -843,7 +844,6 @@ const duration = ref('5s');
 onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations()));
 
 function animate() {
-    console.log('ANIMATE FUNNY 2');
     svgDOM.value.querySelectorAll('.funny-animation').forEach(el => el.beginElement());
     svgDOM.value.unpauseAnimations();
 }

@@ -36,13 +36,27 @@ function selectVariant(key, value) {
     setTimeout(() => show_next_button.value = true, show_next_button_delay);
 
     if (question.proper !== key) {
-        setTimeout(()=>reactions.value.animateSad(),1000);
+        reactions.value.animateSad();
         return console.error('Wrong');
     }
-    setTimeout(()=>reactions.value.animateFunny(),1000);
+    reactions.value.animateFunny();
     is_success.value = true;
     addPoint();
+
 }
+
+const alanka_positions = [
+    '19%',
+    '12.5%',
+    '15%',
+    '18.7%',
+    '62.3%',
+    '16.2%',
+    '10%',
+    '41%',
+    '26.4%',
+    '17.7%'
+];
 </script>
 
 <template>
@@ -83,17 +97,20 @@ function selectVariant(key, value) {
                 </div>
             </div>
         </div>
-        <reactions-wrapper ref="reactions" class="reactions-wrapper"/>
+        <reactions-wrapper
+            :style="{left: alanka_positions[question_number]}"
+            ref="reactions" class="reactions-wrapper"/>
     </main>
 </template>
 <style lang="scss">
-.reactions-wrapper{
+.reactions-wrapper {
     position: absolute;
     z-index: 10;
-    bottom: -55px;
-    left:19%;
-    width:calc(250/1920 * 100vw);
+    width: calc(257 / 1080 * 100vh);
+    bottom:0;
+    transform: translateY(11%);
 }
+
 span {
     &.wrong {
         color: $wrong-color;
@@ -145,12 +162,12 @@ span {
     font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: calc(24 / 1920/$text-scale-coefficient * 100vw);
+    font-size: calc(24 / 1920 / $text-scale-coefficient * 100vw);
     line-height: 100%;
 }
 
 .buttons {
-    min-width: calc(800/1920 * 100vw);
+    min-width: calc(800 / 1920 * 100vw);
     max-width: 607px;
     display: flex;
     flex-direction: column;
@@ -176,7 +193,7 @@ span {
     font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(26 / 1920/$text-scale-coefficient * 100vw);
+    font-size: calc(26 / 1920 / $text-scale-coefficient * 100vw);
     line-height: 137%;
 }
 
@@ -190,7 +207,7 @@ span {
     line-height: 120%;
     max-width: calc(800 / 1920 * 100vw);
     flex-grow: 1;
-    align-self:center;
+    align-self: center;
 }
 
 .question-answer-button {
