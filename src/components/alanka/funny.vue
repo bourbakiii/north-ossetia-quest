@@ -847,7 +847,6 @@ onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations()));
 function animate() {
     svgDOM.value.querySelectorAll('.funny-animation').forEach(el => el.beginElement());
     svgDOM.value.unpauseAnimations();
-
     setTimeout(() => svgDOM.value.pauseAnimations(), stop_animation_time);
 }
 

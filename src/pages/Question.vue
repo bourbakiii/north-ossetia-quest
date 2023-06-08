@@ -1,6 +1,4 @@
 <script setup>
-import icon from "@/components/icon.vue";
-
 import {computed, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {useQuestionsStore} from "@/stores/questions";
@@ -18,7 +16,6 @@ const is_success = ref(false);
 if ($route.params.id <= 0) $router.push("/question/1")
 else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
 
-// const question_number = $route.params.id < 0 ? 0 : (($route.params.id > questions.length - 1) ? (+questions.length - 1) : +$route.params.id);
 const question_number = $route.params.id - 1;
 console.log('index, ', question_number);
 const question = questions[question_number];
@@ -28,7 +25,7 @@ const next_button_url = computed(() => +$route.params.id >= questions.length ? `
 const answer_text = ref(null);
 
 const show_next_button = ref(false);
-const show_next_button_delay =1000;
+const show_next_button_delay =800;
 
 function selectVariant(key, value) {
     answer_text.value = value.answer;
@@ -79,8 +76,8 @@ const alanka_positions = [
                                     :class="is_success?'success':'wrong'">{{
                                         is_success ? 'Верно! ' : 'Неверно. '
                                     }}</span>
-                                {{ answer_text }}</p>
-                            <p v-else class="question-answer">{{ question.text }}</p>
+                                <span class="text" v-html="answer_text"></span></p>
+                            <p v-else class="question-answer" v-html="question.text"></p>
                         </transition>
                     </div>
                     <transition name="answer-text-transition">
@@ -193,7 +190,7 @@ span {
     font-family: 'FuturaPT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(26 / 1920 /$text-scale-coefficient * 100vw);
+    font-size: calc(25 / 1920 /$text-scale-coefficient * 100vw);
     line-height: 130%;
 }
 
