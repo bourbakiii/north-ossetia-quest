@@ -841,11 +841,14 @@ import {onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
 const duration = ref('5s');
+const stop_animation_time = 1400;
 onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations()));
 
 function animate() {
     svgDOM.value.querySelectorAll('.funny-animation').forEach(el => el.beginElement());
     svgDOM.value.unpauseAnimations();
+
+    setTimeout(() => svgDOM.value.pauseAnimations(), stop_animation_time);
 }
 
 defineExpose({animate});

@@ -7,7 +7,7 @@
     <h2>{{points}}/{{question_length}}</h2>
     <h1>{{result.title}}</h1>
       <div class="result-text__wrapper">
-          <img class="result-text__background" src="../assets/images/result-bubble.svg" alt="Bubble">
+          <img class="result-text__background" src="./../assets/images/result-bubble.svg" alt="Bubble">
       <p>{{result.text}}</p>
       </div>
     <router-link class="result-main-button main-button" to="/">Сыграть еще раз</router-link>
@@ -19,7 +19,8 @@
 import {useProgressStore} from "@/stores/progress.js";
 import {useQuestionsStore} from "@/stores/questions.js";
 import icon from "@/components/icon.vue";
-const image_url = new URL(`/src/assets/images/backgrounds/back-result.svg`, import.meta.url);
+const image_url = new URL(`@/assets/images/backgrounds/back-result.svg`, import.meta.url);
+// const bubble_url = new URL(``, import.meta.url);
 
 const {points} = useProgressStore();
 function getResults(points){

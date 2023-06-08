@@ -903,21 +903,9 @@ import {onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
 const duration = ref('2.86s');
-// let animation_timeout = null;
+const stop_animation_time = 1500;
+onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations(), stop_animation_time));
 
-// onMounted(() => {
-    // setTimeout(() => svgDOM.value.pauseAnimations())
-// });
-
-function animate() {
-    // if(animation_timeout!=null) return;
-
-    // svgDOM.value.querySelectorAll('.sad-animation').forEach(el => el.beginElement());
-    // svgDOM.value.unpauseAnimations();
-
-}
-
-defineExpose({animate});
 </script>
 
 <style lang="scss">

@@ -28,7 +28,7 @@ const next_button_url = computed(() => +$route.params.id >= questions.length ? `
 const answer_text = ref(null);
 
 const show_next_button = ref(false);
-const show_next_button_delay = 2500;
+const show_next_button_delay =1000;
 
 function selectVariant(key, value) {
     answer_text.value = value.answer;
@@ -54,7 +54,7 @@ const alanka_positions = [
     '16.2%',
     '10%',
     '41%',
-    '26.4%',
+    '32.4%',
     '17.7%'
 ];
 </script>
@@ -190,11 +190,11 @@ span {
 
 .question-answer {
     border-radius: 10px;
-    font-family: 'Futura PT', sans-serif;
+    font-family: 'FuturaPT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(26 / 1920 / $text-scale-coefficient * 100vw);
-    line-height: 137%;
+    font-size: calc(26 / 1920 /$text-scale-coefficient * 100vw);
+    line-height: 130%;
 }
 
 .question-place {
