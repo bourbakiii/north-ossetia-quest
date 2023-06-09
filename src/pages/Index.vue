@@ -1,25 +1,23 @@
 <template>
     <main class="page index-page">
-              <img :src="image_url " alt="" class="index-page__background">
-        <img src="../assets/images/logotype.png" alt="Logotype" class="logotype" />
-        <go-home />
+        <img :src="image_url " alt="" class="index-page__background">
+        <img src="../assets/images/logotype.png" alt="Logotype" class="logotype"/>
+        <go-home/>
 
         <div class="character-absoluter">
-        <div class="character-wrapper">
-            <div class="character-cloud">
-                <icon class="back-bubble" name="back-bubble"/>
-                <icon class="front-bubble" name="front-bubble"/>
-                <p class="character-phrase">
-                Привет, я Аланка! Давайте проверим, <br/> что вы знаете о Северной Осетии?<br>
-                Ответьте правильно минимум на 7 вопросов <br/> и получите сувенир!
-                </p>
+            <div class="character-wrapper">
+                <div class="character-cloud">
+                    <icon class="back-bubble" name="back-bubble"/>
+                    <icon class="front-bubble" name="front-bubble"/>
+                    <p class="character-phrase">
+                        Привет, я Аланка! Давайте проверим, <br/> что вы знаете о Северной Осетии?<br>
+                        Ответьте правильно минимум на 7 вопросов <br/> и получите сувенир!
+                    </p>
+                </div>
+                <alanka-hello class="svg-character"/>
             </div>
-            <alanka-hello class="svg-character"/>
-        </div>
         </div>
         <router-link class="index-main-button main-button" to="/question/1">Начать игру</router-link>
-
-
     </main>
 </template>
 
@@ -31,34 +29,37 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 </script>
 
 <style lang="scss" scoped>
-.logotype{
+.logotype {
     position: absolute;
-    top:100px;
-    left:50%;
+    top: 100px;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 }
-.character-cloud{
+
+.character-cloud {
     position: absolute;
-    top:0;
-    right:100%;
+    top: 0;
+    right: 100%;
 }
-.back-bubble{
+
+.back-bubble {
     position: absolute;
-    top:-26px;
-    left:-20px;
+    top: -26px;
+    left: -20px;
     z-index: -1;
 }
-.character-phrase{
+
+.character-phrase {
     position: absolute;
     left: 47%;
-    top:50%;
+    top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width:85%;
-    font-family: 'Futura PT',sans-serif;
+    width: 85%;
+    font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: calc(20/1920/$text-scale-coefficient * 100vw);
+    font-size: calc(20 / 1920 / $text-scale-coefficient * 100vw);
     line-height: calc(130%);
     text-align: center;
 
@@ -91,19 +92,20 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 }
 
 h1 {
-    font-size: calc(32/1920/$text-scale-coefficient * 100vw);
+    font-size: calc(32 / 1920 / $text-scale-coefficient * 100vw);
     font-weight: bold;
     text-align: center;
 }
-.character-absoluter{
+
+.character-absoluter {
     position: absolute;
-    right:calc(300/1920 * 100vw);
-    bottom:calc(30/1080 * 100vh);
+    right: calc(300 / 1920 * 100vw);
+    bottom: calc(30 / 1080 * 100vh);
     z-index: 10;
 
     @media screen and (max-width: 1800px) {
-        right:calc(130/1920 * 100vw);
-        bottom:calc(40/1080 * 100vh);
+        right: calc(130 / 1920 * 100vw);
+        bottom: calc(40 / 1080 * 100vh);
     }
 }
 
@@ -121,10 +123,11 @@ h1 {
     bottom: 0;
     z-index: 2;
 }
-.index-main-button{
+
+.index-main-button {
     position: absolute;
-    left:50%;
-    bottom: calc(150/1080 * 100vh);
+    left: 50%;
+    bottom: calc(150 / 1080 * 100vh);
     transform: translate(-50%, -50%);
     height: max-content;
 }
