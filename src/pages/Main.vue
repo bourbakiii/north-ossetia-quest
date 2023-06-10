@@ -1,5 +1,9 @@
 <script setup>
 import Icon from "@/components/icon.vue";
+import {ref} from "vue";
+import Lightbox from "@/components/Lightbox.vue";
+
+const is_lightbox = ref(false);
 
 const image_url = new URL(`@/assets/images/screens/main.png`, import.meta.url);
 const rso_logo = new URL(`@/assets/icons/rso-logo.png`, import.meta.url);
@@ -15,11 +19,15 @@ const link_buttons = [
     {
         class: 'upscaled',
         name: 'Инвестиционные проекты'
-    },
-    {
-        class: 'upscaled',
-        name: 'Инвестиционная карта'
     }];
+
+function showLightbox() {
+    is_lightbox.value = true;
+}
+
+function closeLightbox() {
+    is_lightbox.value = false;
+}
 </script>
 
 <template>
@@ -38,6 +46,13 @@ const link_buttons = [
                     <router-link :to="button.to||''" :class="`screen-button link ${button.class||''}`">
                         {{ button.name }}
                     </router-link>
+
+                </div>
+                <div class="link-wrapper">
+
+                    <button @click="showLightbox" class="screen-button link upscaled">
+                        Инвестиционная карта
+                    </button>
                 </div>
             </div>
             <router-link class="main-start-button" to="/start">
@@ -47,6 +62,13 @@ const link_buttons = [
                 </div>
             </router-link>
         </div>
+        <transition name="modal-transition">
+            <Lightbox @close="closeLightbox" v-show="is_lightbox">
+
+                    <iframe  class="lightbox__iframe"
+                            src="http://invmap.web-robot.ru/"></iframe>
+            </Lightbox>
+        </transition>
     </main>
 </template>
 
@@ -106,6 +128,8 @@ const link_buttons = [
 }
 
 .link {
+    cursor: pointer;
+
     &-wrapper {
         display: flex;
         align-items: center;
@@ -180,5 +204,10 @@ const link_buttons = [
             }
         }
     }
+}
+
+.lightbox__iframe {
+    width: 85%;
+    height: 85%;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <transition name="opacity-transition" mode="out-in">
-        <Layout>
+        <component :key="$route.meta.layout"  :is="LAYOUT_COMPONENT">
             <template v-slot:page-render>
                 <router-view v-slot="{ Component, route }">
                     <transition name="opacity-transition" mode="out-in">
@@ -8,7 +8,7 @@
                     </transition>
                 </router-view>
             </template>
-        </Layout>
+        </component>
     </transition>
 </template>
 
@@ -32,7 +32,6 @@ watch($route.value, value => {
 });
 LAYOUT_COMPONENT = defineAsyncComponent(() => import(`@/layouts/${CURRENT_LAYOUT_NAME.value}.vue`))
 watch(CURRENT_LAYOUT_NAME, () => {
-    console.log("Change layout");
     LAYOUT_COMPONENT = defineAsyncComponent(() => import(`@/layouts/${CURRENT_LAYOUT_NAME.value}.vue`))
 });
 </script>

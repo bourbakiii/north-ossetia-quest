@@ -1,7 +1,6 @@
 <template>
     <div class="layout game-layout">
         <img :src="image_url" alt="" class="game-layout__background">
-
         <slot name="page-render">Кажется, что-то пошло не так...</slot>
         <!--        <Video/>-->
     </div>
@@ -23,6 +22,7 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-11.svg`, import.m
         height: 100vh;
         object-fit: cover;
         display: block;
+        background-color: green;
         z-index: -1;
     }
 }
