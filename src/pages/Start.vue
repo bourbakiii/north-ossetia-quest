@@ -1,6 +1,6 @@
 <template>
-    <main class="page index-page">
-        <img :src="image_url " alt="" class="index-page__background">
+    <main class="page start-page">
+        <img :src="image_url " alt="" class="start-page__background">
         <img src="../assets/images/logotype.png" alt="Logotype" class="logotype"/>
         <go-home/>
 
@@ -65,7 +65,7 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 
 }
 
-.index-page {
+.start-page {
     height: 100%;
     display: flex;
     align-items: stretch;

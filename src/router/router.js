@@ -4,7 +4,16 @@ const routes = [
     {
         path: '/',
         name: 'Index',
-        component: () => import('@/Pages/Index.vue')
+        component: () => import('@/pages/Main.vue')
+    },
+    {
+        path: '/industrialization',
+        component: () => import('@/Pages/Industrialization.vue')
+    },
+    {
+        path: '/start',
+        name: 'Start game',
+        component: () => import('@/pages/Start.vue')
     },
     {
         path: '/question/:id',
@@ -13,10 +22,6 @@ const routes = [
     {
         path: '/result',
         component: () => import('@/Pages/Result.vue')
-    },
-    {
-        path: '/industrialization',
-        component: () => import('@/Pages/Industrialization.vue')
     },
 ];
 const router = createRouter({
