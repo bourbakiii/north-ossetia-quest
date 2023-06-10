@@ -36,8 +36,9 @@ const video_buttons = [{
         <img :src="image_url" alt="" class="industrialization-page__background">
         <div class="industrialization-page__content">
             <h1 class="industrialization-page__title">Промышленность</h1>
-            <div class="industrialization-page__video-buttons">
-                <button v-for="button in video_buttons" class="video-button" v-html="button.name"></button>
+            <div class="industrialization-page__screen-buttons">
+                <router-link v-for="button in video_buttons" :to="button.to||''" class="screen-button"
+                             v-html="button.name"></router-link>
             </div>
         </div>
     </main>
@@ -52,7 +53,7 @@ const video_buttons = [{
     justify-content: center;
     flex-direction: column;
     position: relative;
-    padding: 0 calc(140/1920 * 100vw) calc(63 / 1080 * 100vh) ;
+    padding: 0 calc(140 / 1920 * 100vw) calc(63 / 1080 * 100vh);
 
     &__background {
         position: fixed;
@@ -76,18 +77,18 @@ const video_buttons = [{
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        height:calc(84/1920 * 100vw);
+        height: calc(84 / 1920 * 100vw);
         flex-grow: 1;
         flex-shrink: 0;
         text-align: center;
-        font-size: calc(84/1920 * 100vw);
+        font-size: calc(84 / 1920 * 100vw);
         text-transform: uppercase;
         font-weight: 700;
         color: white;
         background: #7C7C7B;
     }
 
-    &__video-buttons {
+    &__screen-buttons {
         flex-grow: 1;
         flex-shrink: 0;
         display: flex;
@@ -97,15 +98,4 @@ const video_buttons = [{
     }
 }
 
-.video-button {
-    font-family: 'FuturaPT', sans-serif;
-    font-weight: 500;
-    font-size: calc(33 / 1920 * 100vw);
-    height: calc(77/1080 * 100vh);
-
-    border: none;
-    outline: none;
-    border-radius: 90px;
-    text-transform: uppercase;
-}
 </style>

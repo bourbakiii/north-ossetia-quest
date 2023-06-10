@@ -108,3 +108,24 @@ html, body, #app {
     border-radius: 90px;
     text-decoration: none !important;
 }
+
+.screen-button {
+    font-family: 'FuturaPT', sans-serif;
+    font-weight: 500;
+    font-size: calc(33 / 1920 * 100vw);
+    text-decoration: none !important;
+    height: calc(77/1080 * 100vh);
+    color: black !important;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    border-radius: 90px;
+    text-transform: uppercase;
+    transition: .25s;
+    &:hover{
+        opacity: 0.8;
+    }
+}
