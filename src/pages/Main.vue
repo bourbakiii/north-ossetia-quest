@@ -10,7 +10,8 @@ const rso_logo = new URL(`@/assets/icons/rso-logo.png`, import.meta.url);
 const game_icon = new URL(`@/assets/icons/game-logo-btn.svg`, import.meta.url);
 const link_buttons = [
     {
-        name: 'Презентация региона'
+        name: 'Презентация региона',
+        to: '/industrialization'
     },
     {
         name: 'Промышленность',
@@ -18,6 +19,7 @@ const link_buttons = [
     },
     {
         class: 'upscaled',
+        to: '/industrialization',
         name: 'Инвестиционные проекты'
     }];
 
@@ -65,8 +67,8 @@ function closeLightbox() {
         <transition name="modal-transition">
             <Lightbox @close="closeLightbox" v-show="is_lightbox">
 
-                    <iframe  class="lightbox__iframe"
-                            src="http://invmap.web-robot.ru/"></iframe>
+                <iframe class="lightbox__iframe"
+                        src="http://invmap.web-robot.ru/"></iframe>
             </Lightbox>
         </transition>
     </main>

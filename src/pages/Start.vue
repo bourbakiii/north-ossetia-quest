@@ -83,7 +83,6 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
         display: block;
         z-index: -1;
     }
-
 }
 
 .start-button {

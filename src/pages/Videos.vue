@@ -5,11 +5,9 @@ import Lightbox from "@/components/Lightbox.vue";
 
 const image_url = new URL(`@/assets/images/screens/videos.svg`, import.meta.url);
 const video_preview_url = new URL(`@/assets/videos/VVRZ/preview.png`, import.meta.url);
-const is_lightbox = ref(true);
+const is_lightbox = ref(false);
 
 function showLightbox(item) {
-    console.log("The item is:");
-    console.log(item);
     is_lightbox.value = true;
 }
 

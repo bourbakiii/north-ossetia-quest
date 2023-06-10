@@ -1,4 +1,6 @@
 <script setup>
+import GoHome from "@/components/go-home.vue";
+
 const image_url = new URL(`@/assets/images/screens/industrialization.png`, import.meta.url);
 const video_buttons = [{
     name: 'Промышленные площадки',
@@ -44,6 +46,7 @@ const video_buttons = [{
 <template>
     <main class="industrialization-page page">
         <img :src="image_url" alt="" class="industrialization-page__background">
+            <go-home class="industrialization-page__home"/>
         <div class="industrialization-page__content">
             <h1 class="industrialization-page__title">Промышленность</h1>
             <div class="industrialization-page__screen-buttons">
@@ -60,7 +63,7 @@ const video_buttons = [{
     height: 100%;
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     position: relative;
     padding: 0 calc(140 / 1920 * 100vw) calc(63 / 1080 * 100vh);
@@ -76,11 +79,16 @@ const video_buttons = [{
         z-index: -1;
     }
 
+    &__home {
+flex-shrink: 0;
+    }
+
     &__content {
         display: flex;
         align-items: center;
         flex-direction: row;
-
+        flex-grow: 1;
+        transform: translateY(-30px);
     }
 
     &__title {
