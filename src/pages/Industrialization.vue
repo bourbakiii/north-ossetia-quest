@@ -1,31 +1,41 @@
 <script setup>
 const image_url = new URL(`@/assets/images/screens/industrialization.png`, import.meta.url);
 const video_buttons = [{
-    name: 'Промышленные площадки'
+    name: 'Промышленные площадки',
+    to: '/videos'
 },
     {
-        name: 'Строительные материалы'
-    }, {
-        name: 'Радиоэлектроника'
+        name: 'Строительные материалы',
+        to: '/videos'
+    },
+    {
+        name: 'Радиоэлектроника',
+        to: '/videos'
     },
 
     {
-        name: 'Производство мебели'
+        name: 'Производство мебели',
+        to: '/videos'
     },
     {
-        name: 'Металлургия'
+        name: 'Металлургия',
+        to: '/videos'
     },
     {
-        name: 'Легкая промышленность'
+        name: 'Легкая промышленность',
+        to: '/videos'
     },
     {
-        name: 'Машиностроение'
+        name: 'Машиностроение',
+        to: '/videos'
     },
     {
-        name: 'Стекольная промышленность'
+        name: 'Стекольная промышленность',
+        to: '/videos'
     },
     {
-        name: 'Центр НХП'
+        name: 'Центр НХП',
+        to: '/videos'
     },];
 
 
@@ -85,7 +95,7 @@ const video_buttons = [{
         text-transform: uppercase;
         font-weight: 700;
         color: white;
-        background: #7C7C7B;
+        background: $grey;
     }
 
     &__screen-buttons {

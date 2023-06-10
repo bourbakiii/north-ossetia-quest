@@ -9,6 +9,17 @@
     transition: .55s;
   }
 }
+.modal-transition {
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+    }
+
+    &-enter-active,
+    &-leave-active {
+        transition: .2s;
+    }
+}
 
 
 .answer-text-transition {

@@ -11,16 +11,25 @@ const routes = [
         component: () => import('@/Pages/Industrialization.vue')
     },
     {
+        path: '/videos',
+        component: () => import('@/Pages/Videos.vue')
+    },
+    {
         path: '/start',
         name: 'Start game',
+        meta: {layout: 'game-layout'},
         component: () => import('@/pages/Start.vue')
     },
     {
         path: '/question/:id',
+        meta: {layout: 'game-layout'},
+
         component: () => import('@/Pages/Question.vue')
     },
     {
         path: '/result',
+        meta: {layout: 'game-layout'},
+
         component: () => import('@/Pages/Result.vue')
     },
 ];

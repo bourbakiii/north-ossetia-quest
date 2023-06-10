@@ -129,3 +129,14 @@ html, body, #app {
         opacity: 0.8;
     }
 }
+
+
+.fslightboxfis{
+    display: flex;
+}
+.fslightbox-toolbar-button:nth-child(1){
+    display: none !important;
+}
+.fslightbox-toolbar-button:nth-child(2){
+    transform: translate(-50%, 50%)  scale(3) !important;
+}
