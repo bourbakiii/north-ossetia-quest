@@ -1019,19 +1019,15 @@
         </g>
         <g id="time_group"/>
     </svg>
-
-
-    <!--    375 30 400 1000-->
-
-
 </template>
 
 <script setup>
-import {nextTick, onBeforeMount, onMounted, ref} from "vue";
+import {onUnmounted, onMounted, ref} from "vue";
 
 const svgDOM = ref(null);
 const hello_animation_time = ref('4s');
 let animation_timeout = null;
+
 
 onMounted(() => {
     setTimeout(() => {
@@ -1039,6 +1035,8 @@ onMounted(() => {
         animateHello();
     });
 });
+
+onUnmounted(()=>clearTimeout(animation_timeout));
 
 function animateHello() {
     if (animation_timeout != null) return;

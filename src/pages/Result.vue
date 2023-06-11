@@ -19,6 +19,7 @@
 import {useProgressStore} from "@/stores/progress.js";
 import {useQuestionsStore} from "@/stores/questions.js";
 import icon from "@/components/icon.vue";
+import {computed} from "vue";
 
 const image_url = new URL(`@/assets/images/backgrounds/back-result.svg`, import.meta.url);
 const bubble_url = new URL(`@/assets/images/result-bubble.svg`, import.meta.url);
@@ -41,7 +42,7 @@ function getResults(points) {
         }
 }
 
-const result = getResults(points);
+const result = computed(() => getResults(points));
 const question_length = useQuestionsStore().questions.length;
 </script>
 

@@ -11,7 +11,9 @@ const $route = useRoute(), $router = useRouter();
 const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.id}.svg`, import.meta.url);
 
 const {questions} = useQuestionsStore();
-const {addPoint} = useProgressStore();
+const {addPoint, answers} = useProgressStore();
+if (answers[$route.params.id-1].answered) $router.push(`/question/${+$route.params.id + 1}`);
+console.log(answers[$route.params.id-1]);
 const is_success = ref(false);
 if ($route.params.id <= 0) $router.push("/question/1")
 else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
@@ -25,7 +27,7 @@ const next_button_url = computed(() => +$route.params.id >= questions.length ? `
 const answer_text = ref(null);
 
 const show_next_button = ref(false);
-const show_next_button_delay =800;
+const show_next_button_delay = 800;
 
 function selectVariant(key, value) {
     answer_text.value = value.answer;
@@ -33,12 +35,13 @@ function selectVariant(key, value) {
     setTimeout(() => show_next_button.value = true, show_next_button_delay);
 
     if (question.proper !== key) {
+        addPoint($route.params.id - 1, false);
         reactions.value.animateSad();
         return console.error('Wrong');
     }
     reactions.value.animateFunny();
     is_success.value = true;
-    addPoint();
+    addPoint($route.params.id - 1, true);
 
 }
 
@@ -104,7 +107,7 @@ const alanka_positions = [
     position: absolute;
     z-index: 10;
     width: calc(257 / 1080 * 100vh);
-    bottom:0;
+    bottom: 0;
     transform: translateY(11%);
 }
 
@@ -190,7 +193,7 @@ span {
     font-family: 'FuturaPT', sans-serif;
     font-style: normal;
     font-weight: 450;
-    font-size: calc(25 / 1920 /$text-scale-coefficient * 100vw);
+    font-size: calc(25 / 1920 / $text-scale-coefficient * 100vw);
     line-height: 130%;
 }
 

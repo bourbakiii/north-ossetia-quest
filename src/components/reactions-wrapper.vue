@@ -8,13 +8,6 @@ const __FUNNY__ = ref(null);
 const is_sad = ref(false);
 let animation_timeout = null;
 
-function animateSad() {
-    is_sad.value = true;
-    clearTimeout(animation_timeout);
-    animation_timeout = setTimeout(() => {
-        __SAD__.value.animate();
-    });
-}
 
 function animateFunny() {
     is_sad.value = false;
@@ -24,7 +17,7 @@ function animateFunny() {
     });
 }
 
-defineExpose({animateSad, animateFunny});
+defineExpose({animateFunny});
 </script>
 
 <template>

@@ -18,9 +18,12 @@
 <script setup>
 import AlankaHello from "@/components/alanka/hello.vue";
 import Icon from "@/components/icon.vue";
+import {useProgressStore} from "@/stores/progress.js";
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.meta.url);
 const phrase_url = new URL("@/assets/icons/alanka-text.svg", import.meta.url);
+const store = useProgressStore();
+store.reset();
 </script>
 
 <style lang="scss" scoped>
@@ -34,8 +37,8 @@ const phrase_url = new URL("@/assets/icons/alanka-text.svg", import.meta.url);
 
 .character-cloud {
     position: absolute;
-    width: calc(570/1920 * 100vw);
-    height: calc(213/1080 * 100vh);
+    width: calc(570 / 1920 * 100vw);
+    height: calc(213 / 1080 * 100vh);
     object-fit: contain;
     top: -40px;
     right: 100%;

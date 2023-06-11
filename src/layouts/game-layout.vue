@@ -2,19 +2,13 @@
     <div class="layout game-layout">
         <img :src="image_url" alt="" class="game-layout__background">
         <slot name="page-render">Кажется, что-то пошло не так...</slot>
-        <!--        <Video/>-->
     </div>
 </template>
 <script setup>
-import {useRouter} from "vue-router";
-import {onMounted} from "vue";
+import router from "@/router/router.js";
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-11.svg`, import.meta.url);
-const $router = useRouter();
-onMounted(()=>{
-$router.push('/start');
-
-})
+router.push('/start');
 </script>
 <style lang="scss" scoped>
 .game-layout {
