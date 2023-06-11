@@ -18,7 +18,7 @@ import {useRoute, useRouter} from 'vue-router';
 import Layout from "@/layouts/layout.vue";
 import {useAFKStore} from "@/stores/afk.js";
 
-useRouter().push('/');
+// useRouter().push('/');
 // alert("СДЕЛАЙ ПОКА ВОЗВРАТ ПРИ АФК");
 
 // Настройка layout-ов и анимации для перехода между страницами  ///////////////////////////////////////////////////////////

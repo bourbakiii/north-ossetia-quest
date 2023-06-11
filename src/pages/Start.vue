@@ -6,14 +6,8 @@
 
         <div class="character-absoluter">
             <div class="character-wrapper">
-                <div class="character-cloud">
-                    <icon class="back-bubble" name="back-bubble"/>
-                    <icon class="front-bubble" name="front-bubble"/>
-                    <p class="character-phrase">
-                        Привет, я Аланка! Давайте проверим, <br/> что вы знаете о Северной Осетии?<br>
-                        Ответьте правильно минимум на 7 вопросов <br/> и получите сувенир!
-                    </p>
-                </div>
+                <img class="character-cloud" :src="phrase_url" alt=".">
+
                 <alanka-hello class="svg-character"/>
             </div>
         </div>
@@ -26,6 +20,7 @@ import AlankaHello from "@/components/alanka/hello.vue";
 import Icon from "@/components/icon.vue";
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.meta.url);
+const phrase_url = new URL("@/assets/icons/alanka-text.svg", import.meta.url);
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +34,10 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
 
 .character-cloud {
     position: absolute;
-    top: 0;
+    width: calc(570/1920 * 100vw);
+    height: calc(213/1080 * 100vh);
+    object-fit: contain;
+    top: -40px;
     right: 100%;
 }
 
@@ -48,21 +46,6 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-0.svg`, import.me
     top: -26px;
     left: -20px;
     z-index: -1;
-}
-
-.character-phrase {
-    position: absolute;
-    left: 47%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 85%;
-    font-family: 'Futura PT', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: calc(20 / 1920 / $text-scale-coefficient * 100vw);
-    line-height: calc(130%);
-    text-align: center;
-
 }
 
 .start-page {
@@ -114,7 +97,6 @@ h1 {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-
 }
 
 .svg-character {
