@@ -46,7 +46,7 @@ const video_buttons = [{
 <template>
     <main class="industrialization-page page">
         <img :src="image_url" alt="" class="industrialization-page__background">
-            <go-home class="industrialization-page__home"/>
+        <go-home class="industrialization-page__home"/>
         <div class="industrialization-page__content">
             <h1 class="industrialization-page__title">Промышленность</h1>
             <div class="industrialization-page__screen-buttons">
@@ -66,7 +66,7 @@ const video_buttons = [{
     justify-content: flex-start;
     flex-direction: column;
     position: relative;
-    padding: 0 calc(140 / 1920 * 100vw) calc(63 / 1080 * 100vh);
+    padding: 0 0 calc(63 / 1080 * 100vh);
 
     &__background {
         position: fixed;
@@ -80,7 +80,8 @@ const video_buttons = [{
     }
 
     &__home {
-flex-shrink: 0;
+    color: white !important;
+        flex-shrink: 0;
     }
 
     &__content {
@@ -89,6 +90,7 @@ flex-shrink: 0;
         flex-direction: row;
         flex-grow: 1;
         transform: translateY(-30px);
+        padding: 0 calc(140 / 1920 * 100vw)
     }
 
     &__title {

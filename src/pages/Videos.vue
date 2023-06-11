@@ -31,7 +31,7 @@ function closeLightbox() {
 
         <transition name="modal-transition">
             <Lightbox class="lightbox" @close="closeLightbox" v-if="is_lightbox">
-                <video autoplay class="lightbox-video" src="../assets/videos/VVRZ/video.mp4"/>
+                <video controls autoplay class="lightbox-video" src="../assets/videos/VVRZ/video.mp4"/>
             </Lightbox>
         </transition>
     </main>

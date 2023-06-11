@@ -10,7 +10,7 @@
                 <img class="result-text__background" :src="bubble_url" alt="Bubble">
                 <p v-html="result.text"></p>
             </div>
-            <router-link class="result-main-button main-button" to="/">Сыграть еще раз</router-link>
+            <router-link class="result-main-button main-button" to="/start">Сыграть еще раз</router-link>
         </div>
     </main>
 </template>

@@ -6,9 +6,15 @@
     </div>
 </template>
 <script setup>
-// import Video from "@/components/video.vue";
+import {useRouter} from "vue-router";
+import {onMounted} from "vue";
 
 const image_url = new URL(`/src/assets/images/backgrounds/back-11.svg`, import.meta.url);
+const $router = useRouter();
+onMounted(()=>{
+$router.push('/start');
+
+})
 </script>
 <style lang="scss" scoped>
 .game-layout {

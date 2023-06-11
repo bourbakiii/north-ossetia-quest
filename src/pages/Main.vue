@@ -1,5 +1,4 @@
 <script setup>
-import Icon from "@/components/icon.vue";
 import {ref} from "vue";
 import Lightbox from "@/components/Lightbox.vue";
 
