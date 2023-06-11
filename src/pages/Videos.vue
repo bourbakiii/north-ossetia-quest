@@ -60,11 +60,14 @@ function parseImageURL(item) {
     const string_url = `/videos/${$route.params.video_id[0]}/${additional}${item}/preview.jpg`;
     return new URL(string_url, import.meta.url);
 }
+
 const afk_store = useAFKStore();
-function disableAFK(){
+
+function disableAFK() {
     afk_store.is_afk_watcher_enabled = false;
 }
-function enableAFK(){
+
+function enableAFK() {
     afk_store.is_afk_watcher_enabled = true;
 }
 </script>
@@ -84,7 +87,8 @@ function enableAFK(){
 
         <transition name="modal-transition">
             <Lightbox class="lightbox" @close="closeLightbox" v-if="is_lightbox">
-                <video @pause="enableAFK" @play="disableAFK" controls autoplay class="lightbox-video" :src="parsedVideoURL"/>
+                <video @pause="enableAFK" @play="disableAFK" controls autoplay class="lightbox-video"
+                       :src="parsedVideoURL"/>
             </Lightbox>
         </transition>
     </main>
@@ -123,6 +127,8 @@ function enableAFK(){
         align-items: center;
         justify-content: flex-start;
         flex-direction: column;
+        padding-bottom: 30px;
+
     }
 
     &__title {
@@ -148,15 +154,13 @@ function enableAFK(){
             max-width: calc(580 / 1920 * 100vw);
             gap: 10px;
         }
-
-
     }
 
     &__videos {
-        height: max-content;
+        flex-grow: 1;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 11px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px 20px;
     }
 }
 
@@ -165,7 +169,7 @@ function enableAFK(){
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    max-height: 140px;
+    max-height: 190px;
     border-radius: 12px;
     cursor: pointer;
     transition: .25s;
@@ -179,10 +183,8 @@ function enableAFK(){
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill;
         transition: .25s;
-
-
     }
 }
 

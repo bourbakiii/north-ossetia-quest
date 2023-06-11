@@ -5,7 +5,7 @@ import router from "@/router/router.js";
 export const useAFKStore = defineStore('AFK', () => {
     const is_afk_watcher_enabled = ref(false);
     let timeout = null;
-    let timeout_time = 5000;
+    let timeout_time = 60000;
 
     router.beforeEach(()=>{
         is_afk_watcher_enabled.value = true;
