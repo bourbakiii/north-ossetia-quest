@@ -8,9 +8,6 @@ import GoHome from "@/components/go-home.vue";
 
 const pinia = createPinia();
 const app = createApp(App)
-app.component(
-    'go-home',    GoHome
-);
+app.component('go-home', GoHome);
 
-app.use(router).use(pinia).mount('#app')
-
+app.use(router).use(pinia).mount('#app');

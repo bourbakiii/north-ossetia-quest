@@ -209,6 +209,7 @@ function closeLightbox() {
 }
 
 .lightbox__iframe {
+    border-radius: 12px;
     width: 85%;
     height: 85%;
 }

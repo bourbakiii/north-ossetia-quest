@@ -1,22 +1,7 @@
 <script setup>
 import GoHome from "@/components/go-home.vue";
-
+import ind_names from "@/stores/indust-names";
 const image_url = new URL(`@/assets/images/screens/industrialization.png`, import.meta.url);
-
-
-const video_buttons = [
-    'Промышленные площадки',
-    'Строительные материалы',
-    'Радиоэлектроника',
-    'Производство мебели',
-    'Металлургия',
-    'Легкая промышленность',
-    'Машиностроение',
-    'Стекольная промышленность',
-    'Фармацевция',
-    'Центр НХП',
-    'Инвестиционные проекты',
-];
 </script>
 
 <template>
@@ -26,7 +11,7 @@ const video_buttons = [
         <div class="branch-page__content">
             <h1 class="branch-page__title">Промышленность</h1>
             <div class="branch-page__screen-buttons">
-                <router-link v-for="(button,index) in video_buttons" :to="`/videos/2-${index+1}`" class="screen-button"
+                <router-link v-for="(button,index) in ind_names" :to="`/videos/2-${index+1}`" class="screen-button"
                              v-html="button"></router-link>
             </div>
         </div>

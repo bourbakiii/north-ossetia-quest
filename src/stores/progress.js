@@ -2,8 +2,6 @@ import {ref} from 'vue'
 import {defineStore} from 'pinia'
 
 export const useProgressStore = defineStore('progress', () => {
-    const points = ref(0)
-    const addPoint = ()=>points.value++;
-
+    const answers = Map
     return {points, addPoint}
 });
