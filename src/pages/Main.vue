@@ -10,7 +10,7 @@ const game_icon = new URL(`@/assets/icons/game-logo-btn.svg`, import.meta.url);
 const link_buttons = [
     {
         name: 'Презентация региона',
-        to: '/industrialization'
+        to: '/videos/1'
     },
     {
         name: 'Промышленность',
@@ -18,7 +18,7 @@ const link_buttons = [
     },
     {
         class: 'upscaled',
-        to: '/industrialization',
+        to: '/videos/3',
         name: 'Инвестиционные проекты'
     }];
 
@@ -105,7 +105,7 @@ function closeLightbox() {
 
 .logotype {
     font-family: 'FuturaPT', sans-serif;
-    font-size: 30px;
+    font-size: calc(30 / 1920 * 100vw);
     color: white;
     text-align: center;
     font-weight: 500;
@@ -113,6 +113,7 @@ function closeLightbox() {
     font-style: italic;
     line-height: 120%;
     text-transform: uppercase;
+    flex-shrink: 0;
 
     &__image {
         margin-bottom: calc(27 / 1080 * 100vh);

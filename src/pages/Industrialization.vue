@@ -2,56 +2,32 @@
 import GoHome from "@/components/go-home.vue";
 
 const image_url = new URL(`@/assets/images/screens/industrialization.png`, import.meta.url);
-const video_buttons = [{
-    name: 'Промышленные площадки',
-    to: '/videos'
-},
-    {
-        name: 'Строительные материалы',
-        to: '/videos'
-    },
-    {
-        name: 'Радиоэлектроника',
-        to: '/videos'
-    },
-
-    {
-        name: 'Производство мебели',
-        to: '/videos'
-    },
-    {
-        name: 'Металлургия',
-        to: '/videos'
-    },
-    {
-        name: 'Легкая промышленность',
-        to: '/videos'
-    },
-    {
-        name: 'Машиностроение',
-        to: '/videos'
-    },
-    {
-        name: 'Стекольная промышленность',
-        to: '/videos'
-    },
-    {
-        name: 'Центр НХП',
-        to: '/videos'
-    },];
 
 
+const video_buttons = [
+    'Промышленные площадки',
+    'Строительные материалы',
+    'Радиоэлектроника',
+    'Производство мебели',
+    'Металлургия',
+    'Легкая промышленность',
+    'Машиностроение',
+    'Стекольная промышленность',
+    'Фармацевция',
+    'Центр НХП',
+    'Инвестиционные проекты',
+];
 </script>
 
 <template>
-    <main class="industrialization-page page">
-        <img :src="image_url" alt="" class="industrialization-page__background">
-        <go-home class="industrialization-page__home"/>
-        <div class="industrialization-page__content">
-            <h1 class="industrialization-page__title">Промышленность</h1>
-            <div class="industrialization-page__screen-buttons">
+    <main class="branch-page page">
+        <img :src="image_url" alt="" class="branch-page__background">
+        <go-home class="branch-page__home"/>
+        <div class="branch-page__content">
+            <h1 class="branch-page__title">Промышленность</h1>
+            <div class="branch-page__screen-buttons">
                 <router-link v-for="button in video_buttons" :to="button.to||''" class="screen-button"
-                             v-html="button.name"></router-link>
+                             v-html="button"></router-link>
             </div>
         </div>
     </main>
@@ -59,7 +35,7 @@ const video_buttons = [{
 
 
 <style lang="scss">
-.industrialization-page {
+.branch-page {
     height: 100%;
     display: flex;
     align-items: stretch;
@@ -80,7 +56,7 @@ const video_buttons = [{
     }
 
     &__home {
-    color: white !important;
+        color: white !important;
         flex-shrink: 0;
     }
 

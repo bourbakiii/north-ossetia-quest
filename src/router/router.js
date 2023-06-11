@@ -8,11 +8,15 @@ const routes = [
     },
     {
         path: '/industrialization',
-        component: () => import('@/Pages/Industrialization.vue')
+        component: () => import('@/pages/Industrialization.vue')
     },
     {
-        path: '/videos',
+        path: '/videos/:video_id',
         component: () => import('@/Pages/Videos.vue')
+    },
+    {
+        path: '/presentation',
+        component: () => import('@/pages/Videos.vue')
     },
     {
         path: '/start',

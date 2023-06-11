@@ -1,18 +1,27 @@
 <script setup>
 import GoHome from "@/components/go-home.vue";
-import {ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import Lightbox from "@/components/Lightbox.vue";
-
+import {useRoute} from "vue-router";
 const image_url = new URL(`@/assets/images/screens/videos.svg`, import.meta.url);
-const video_preview_url = new URL(`@/assets/videos/VVRZ/preview.png`, import.meta.url);
 const is_lightbox = ref(false);
+const parsedVideoURL = ref(null);
+const $route = useRoute();
 
+const count_of_videos = computed(()=>+$route.params.video_id===1?2:14);
 function showLightbox(item) {
+    parsedVideoURL.value = new URL(`../assets/videos/${$route.params.video_id}/${item}/video.mp4`, import.meta.url);
     is_lightbox.value = true;
 }
 
 function closeLightbox() {
     is_lightbox.value = false;
+}
+
+function parseImageURL(item) {
+    const url = new URL(`../assets/videos/${$route.params.video_id}/${item}/preview.jpg`, import.meta.url);
+    console.log(url);
+    return url;
 }
 </script>
 
@@ -21,17 +30,17 @@ function closeLightbox() {
         <img :src="image_url" alt="" class="videos-page__background">
         <div class="videos-page__content">
             <go-home class="videos-page__home"/>
-            <h1 class="videos-page__title">Промышленные площадки</h1>
+            <h1 class="videos-page__title">Презентация региона ({{count_of_videos}})</h1>
             <div class="videos-page__videos">
-                <div @click="showLightbox(item)" class="video" v-for='item in 10'>
-                    <img :src="video_preview_url" alt="" class="video__image">
+                <div @click="showLightbox(item)" class="video" v-for='item in count_of_videos'>
+                    <img :src="parseImageURL(item)" alt="" class="video__image">
                 </div>
             </div>
         </div>
 
         <transition name="modal-transition">
             <Lightbox class="lightbox" @close="closeLightbox" v-if="is_lightbox">
-                <video controls autoplay class="lightbox-video" src="../assets/videos/VVRZ/video.mp4"/>
+                <video controls autoplay class="lightbox-video" :src="parsedVideoURL"/>
             </Lightbox>
         </transition>
     </main>
@@ -103,14 +112,16 @@ function closeLightbox() {
         height: max-content;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
+        gap: 11px;
     }
 }
 
 .video {
     display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    height: max-content;
+    max-height: 140px;
     border-radius: 12px;
     cursor: pointer;
     transition: .25s;
@@ -123,9 +134,8 @@ function closeLightbox() {
     &__image {
         display: block;
         width: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        height:100%;
+        object-fit: cover;
         transition: .25s;
 
 
