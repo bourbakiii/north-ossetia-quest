@@ -1,5 +1,5 @@
 <script setup>
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {useQuestionsStore} from "@/stores/questions";
 import {useProgressStore} from "@/stores/progress";
@@ -12,8 +12,10 @@ const image_url = new URL(`/src/assets/images/backgrounds/back-${$route.params.i
 
 const {questions} = useQuestionsStore();
 const {addPoint, answers} = useProgressStore();
-if (answers[$route.params.id-1].answered) $router.push(`/question/${+$route.params.id + 1}`);
-console.log(answers[$route.params.id-1]);
+onMounted(() => setTimeout(() => {
+    if (answers[$route.params.id - 1].answered) $router.push(`/question/${+$route.params.id + 1}`)
+}));
+console.log(answers[$route.params.id - 1]);
 const is_success = ref(false);
 if ($route.params.id <= 0) $router.push("/question/1")
 else if ($route.params.id > questions.length) $router.push(`/question/${questions.length}`);
@@ -37,6 +39,7 @@ function selectVariant(key, value) {
     if (question.proper !== key) {
         addPoint($route.params.id - 1, false);
         reactions.value.animateSad();
+
         return console.error('Wrong');
     }
     reactions.value.animateFunny();

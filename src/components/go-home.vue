@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/" class="main-link">
+    <router-link  :to="$props.to||'/'" class="main-link">
         <icon class="main-link__icon" name="home"/>
         <p class="main-link__text">на главную</p>
     </router-link>

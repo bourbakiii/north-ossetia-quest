@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import Lightbox from "@/components/Lightbox.vue";
+import {useAFKStore} from "@/stores/afk.js";
 
 const is_lightbox = ref(false);
 
@@ -29,6 +30,10 @@ function showLightbox() {
 function closeLightbox() {
     is_lightbox.value = false;
 }
+
+
+const afk_store = useAFKStore();
+afk_store.is_afk_watcher_enabled = false;
 </script>
 
 <template>

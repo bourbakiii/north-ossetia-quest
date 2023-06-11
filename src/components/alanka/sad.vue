@@ -904,6 +904,7 @@ import {onMounted, ref} from "vue";
 const svgDOM = ref(null);
 const duration = ref('2.86s');
 const stop_animation_time = 1500;
+console.log('fasfas')
 onMounted(() => setTimeout(() => svgDOM.value.pauseAnimations(), stop_animation_time));
 
 </script>

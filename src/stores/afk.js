@@ -1,49 +1,40 @@
-// import {ref} from 'vue'
-// import {useRouter} from "vue-router";
+import {ref, watch} from 'vue';
 import {defineStore} from 'pinia'
+import router from "@/router/router.js";
+
 export const useAFKStore = defineStore('AFK', () => {
-    // let timeout = null;
-    // const $router = useRouter();
-    // console.log('АЛЛО НАХУЙ');
-    //     window.onmousemove = restartTimeout;
-    //     window.onclick = restartTimeout;
-    //
-    // function restartTimeout() {
-    //     clearTimeout(timeout);
-    //     timeout = setTimeout(async () => {
-    //         await $router.push('/').then(()=>restartTimeout());
-    //
-    //     }, 5000);
-    // }
-    // function initAFKTimeout(){
-    //     let timeout = null;
-    //
-    //
-    //     restartTimeout();
+    const is_afk_watcher_enabled = ref(false);
+    let timeout = null;
+    let timeout_time = 5000;
 
-    //
+    router.beforeEach(()=>{
+        is_afk_watcher_enabled.value = true;
+    })
+    window.onmousemove = () => {
+        if (is_afk_watcher_enabled.value) initTimeout();
+    }
+    window.onmouseclick = () => {
+        if (is_afk_watcher_enabled.value) initTimeout();
+    }
 
-    //
-    // }
-    //
-    // onst addPoint = ()=>points.value++;
-    //
-    // return {points, addPoint}
+    watch(is_afk_watcher_enabled, value => {
+        console.log("SETTED AFK - ", value);
+        if (value) initTimeout();
+        else removeTimeout();
+    }, {immediate: true});
+
+    function initTimeout() {
+            clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            console.log('GOING HOME');
+            router.push('/');
+        }, timeout_time);
+    }
+
+    function removeTimeout() {
+        clearTimeout(timeout);
+        timeout = null;
+    }
+
+    return {is_afk_watcher_enabled};
 });
-
-// function AFKTimeout() {
-//     let timeout = null;
-//
-//     restartTimeout();
-//     window.onmousemove = restartTimeout;
-//     window.onclick = restartTimeout;
-//
-//     function restartTimeout() {
-//         clearTimeout(timeout);
-//         timeout = setTimeout(async () => {
-//             await $router.value.push('/').then(()=>AFKTimeout());
-//
-//         }, 5000);
-//     }
-//
-// }

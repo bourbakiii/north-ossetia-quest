@@ -4,6 +4,7 @@ import {computed, ref} from "vue";
 import Lightbox from "@/components/Lightbox.vue";
 import {useRoute} from "vue-router";
 import ind_names from "@/stores/indust-names";
+import {useAFKStore} from "@/stores/afk.js";
 
 
 const image_url = new URL(`@/assets/images/screens/videos.svg`, import.meta.url);
@@ -49,6 +50,7 @@ function showLightbox(item) {
 
 function closeLightbox() {
     is_lightbox.value = false;
+    enableAFK();
 }
 
 function parseImageURL(item) {
@@ -58,13 +60,20 @@ function parseImageURL(item) {
     const string_url = `/videos/${$route.params.video_id[0]}/${additional}${item}/preview.jpg`;
     return new URL(string_url, import.meta.url);
 }
+const afk_store = useAFKStore();
+function disableAFK(){
+    afk_store.is_afk_watcher_enabled = false;
+}
+function enableAFK(){
+    afk_store.is_afk_watcher_enabled = true;
+}
 </script>
 
 <template>
     <main class="videos-page page">
         <img :src="image_url" alt="" class="videos-page__background">
         <div class="videos-page__content">
-            <go-home class="videos-page__home"/>
+            <go-home :to="$route.params.video_id[0] === '2'?'/industrialization':'/'" class="videos-page__home"/>
             <h1 class="videos-page__title">{{ title_of_page }}</h1>
             <div class="videos-page__videos">
                 <div @click="showLightbox(item)" class="video" v-for='item in count_of_videos'>
@@ -75,7 +84,7 @@ function parseImageURL(item) {
 
         <transition name="modal-transition">
             <Lightbox class="lightbox" @close="closeLightbox" v-if="is_lightbox">
-                <video controls autoplay class="lightbox-video" :src="parsedVideoURL"/>
+                <video @pause="enableAFK" @play="disableAFK" controls autoplay class="lightbox-video" :src="parsedVideoURL"/>
             </Lightbox>
         </transition>
     </main>
