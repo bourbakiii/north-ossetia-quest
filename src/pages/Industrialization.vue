@@ -26,7 +26,7 @@ const video_buttons = [
         <div class="branch-page__content">
             <h1 class="branch-page__title">Промышленность</h1>
             <div class="branch-page__screen-buttons">
-                <router-link v-for="button in video_buttons" :to="button.to||''" class="screen-button"
+                <router-link v-for="(button,index) in video_buttons" :to="`/videos/2-${index+1}`" class="screen-button"
                              v-html="button"></router-link>
             </div>
         </div>

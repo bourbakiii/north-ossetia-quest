@@ -1,16 +1,43 @@
 <script setup>
 import GoHome from "@/components/go-home.vue";
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import Lightbox from "@/components/Lightbox.vue";
 import {useRoute} from "vue-router";
+
 const image_url = new URL(`@/assets/images/screens/videos.svg`, import.meta.url);
 const is_lightbox = ref(false);
 const parsedVideoURL = ref(null);
 const $route = useRoute();
 
-const count_of_videos = computed(()=>+$route.params.video_id===1?2:14);
+const count_of_videos = computed(() => $route.params.video_id[0] === '1' ? 2 : $route.params.video_id[0] === '2' ? countOfSecondV() : 14);
+
+function countOfSecondV() {
+    console.log($route.params.video_id[2] + ($route.params.video_id[3] !== undefined ? $route.params.video_id[3] : ''));
+    switch ($route.params.video_id[2] + ($route.params.video_id[3] !== undefined ? $route.params.video_id[3] : '')) {
+        case '1':
+        case '2':
+        case '7':
+            return 2;
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+            return 3;
+        case '10':
+        case '8':
+        case '9':
+            return 1;
+        case '11':
+            return 4;
+    }
+}
+
 function showLightbox(item) {
-    parsedVideoURL.value = new URL(`../assets/videos/${$route.params.video_id}/${item}/video.mp4`, import.meta.url);
+    let additional = $route.params.video_id[2] + ($route.params.video_id[3] !== undefined ? $route.params.video_id[3] : '');
+    if (additional!=='undefined') additional = additional + '/';
+    else additional = ''
+    const string_url = `../assets/videos/${$route.params.video_id[0]}/${additional}${item}/video.mp4`;
+    parsedVideoURL.value = new URL(string_url, import.meta.url);
     is_lightbox.value = true;
 }
 
@@ -19,9 +46,11 @@ function closeLightbox() {
 }
 
 function parseImageURL(item) {
-    const url = new URL(`../assets/videos/${$route.params.video_id}/${item}/preview.jpg`, import.meta.url);
-    console.log(url);
-    return url;
+    let additional = $route.params.video_id[2] + ($route.params.video_id[3] !== undefined ? $route.params.video_id[3] : '');
+    if (additional!=='undefined') additional = additional + '/';
+    else additional = ''
+    const string_url = `../assets/videos/${$route.params.video_id[0]}/${additional}${item}/preview.jpg`;
+    return new URL(string_url, import.meta.url);
 }
 </script>
 
@@ -30,7 +59,7 @@ function parseImageURL(item) {
         <img :src="image_url" alt="" class="videos-page__background">
         <div class="videos-page__content">
             <go-home class="videos-page__home"/>
-            <h1 class="videos-page__title">Презентация региона ({{count_of_videos}})</h1>
+            <h1 class="videos-page__title">Презентация региона ({{ count_of_videos }})</h1>
             <div class="videos-page__videos">
                 <div @click="showLightbox(item)" class="video" v-for='item in count_of_videos'>
                     <img :src="parseImageURL(item)" alt="" class="video__image">
@@ -134,7 +163,7 @@ function parseImageURL(item) {
     &__image {
         display: block;
         width: 100%;
-        height:100%;
+        height: 100%;
         object-fit: cover;
         transition: .25s;
 
