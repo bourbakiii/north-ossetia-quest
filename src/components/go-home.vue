@@ -1,11 +1,11 @@
 <template>
     <router-link  :to="$props.to||'/'" class="main-link">
-        <icon class="main-link__icon" name="home"/>
-        <p class="main-link__text">на главную</p>
+        <icon class="main-link__icon" :name="$attrs.icon_name||'home'"/>
+        <p class="main-link__text" v-html="$attrs.content||'на главную'"></p>
     </router-link>
 </template>
 <script setup>
-import icon from "@/components/icon.vue";
+import Icon from "@/components/icon.vue";
 </script>
 <style lang="scss">
 .main-link {

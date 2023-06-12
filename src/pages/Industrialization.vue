@@ -7,7 +7,7 @@ const image_url = new URL(`@/assets/images/screens/industrialization.png`, impor
 <template>
     <main class="branch-page page">
         <img :src="image_url" alt="" class="branch-page__background">
-        <go-home class="branch-page__home"/>
+        <go-home icon_name="home-white" class="branch-page__home"/>
         <div class="branch-page__content">
             <h1 class="branch-page__title">Промышленность</h1>
             <div class="branch-page__screen-buttons">

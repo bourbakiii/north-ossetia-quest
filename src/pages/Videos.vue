@@ -6,11 +6,22 @@ import {useRoute} from "vue-router";
 import ind_names from "@/stores/indust-names";
 import {useAFKStore} from "@/stores/afk.js";
 
+const $route = useRoute();
 
-const image_url = new URL(`@/assets/images/screens/videos.svg`, import.meta.url);
+let image_url = ref(new URL(`@/assets/images/screens/videos-grey.svg`, import.meta.url));
+let icon_name = ref('home-white');
+let icon_class = ref('');
+let icon_text = ref('на главную');
+
+if($route.params.video_id[2] !== undefined) {
+    console.log(12321);
+    image_url.value = new URL(`@/assets/images/screens/industrialization.png`, import.meta.url);
+    icon_name.value = 'back-arrow';
+    icon_class.value = 'arrow';
+    icon_text.value = 'назад'
+}
 const is_lightbox = ref(false);
 const parsedVideoURL = ref(null);
-const $route = useRoute();
 
 const count_of_videos = computed(() => $route.params.video_id[0] === '1' ? 2 : $route.params.video_id[0] === '2' ? countOfSecondV() : 14);
 const title_of_page = computed(() => {
@@ -74,9 +85,10 @@ function enableAFK() {
 
 <template>
     <main class="videos-page page">
-        <img :src="image_url" alt="" class="videos-page__background">
+        <img :class="{original: $route.params.video_id[2] !== undefined}" :src="image_url" alt="" class="videos-page__background">
         <div class="videos-page__content">
-            <go-home :to="$route.params.video_id[0] === '2'?'/industrialization':'/'" class="videos-page__home"/>
+            <go-home :content="icon_text" :class="icon_class" :icon_name="icon_name" :to="$route.params.video_id[0] === '2'?'/industrialization':'/'"
+                     class="videos-page__home"/>
             <h1 class="videos-page__title">{{ title_of_page }}</h1>
             <div class="videos-page__videos">
                 <div @click="showLightbox(item)" class="video" v-for='item in count_of_videos'>
@@ -95,7 +107,7 @@ function enableAFK() {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .videos-page {
     height: 100%;
     display: flex;
@@ -107,19 +119,29 @@ function enableAFK() {
     &__background {
         background-color: $grey;
         position: fixed;
-        top: -3px;
-        left: -3px;
-        width: 101vw;
-        height: 101vh;
+        top: -30vh;
+        left: -30vw;
+        width: 150vw;
+        height: 150vh;
         object-fit: cover;
         display: block;
         z-index: -1;
+        &.original{
+            top: -3px;
+            left: -3px;
+            width: 101vw;
+            height: 101vh;
+        }
     }
 
     &__home {
+        fill: white !important;
         color: white !important;
         align-self: flex-start;
         margin-bottom: 20px;
+        &.arrow{
+            align-items: center;
+        }
     }
 
     &__content {

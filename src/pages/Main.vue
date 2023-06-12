@@ -6,7 +6,7 @@ import {useAFKStore} from "@/stores/afk.js";
 const is_lightbox = ref(false);
 
 const image_url = new URL(`@/assets/images/screens/main.png`, import.meta.url);
-const rso_logo = new URL(`@/assets/icons/rso-logo.png`, import.meta.url);
+const rso_logo = new URL(`/rso-logo.svg`, import.meta.url);
 const game_icon = new URL(`@/assets/icons/game-logo-btn.svg`, import.meta.url);
 const link_buttons = [
     {
@@ -115,23 +115,24 @@ afk_store.is_afk_watcher_enabled = false;
     text-align: center;
     font-weight: 500;
     letter-spacing: 1.4px;
-    font-style: italic;
     line-height: 120%;
     text-transform: uppercase;
     flex-shrink: 0;
 
     &__image {
+        height: calc(129/1920 * 100vw);
+        width:  calc(129/1920 * 100vw);
         margin-bottom: calc(27 / 1080 * 100vh);
     }
 }
 
 .links {
-    margin-top: calc(54 / 1080 * 100vh);
+    margin-top: calc(160 / 1080 * 100vh);
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
-    gap: calc(174 / 1080 * 100vh) 0;
+    gap: calc(60 / 1080 * 100vh) 0;
 }
 
 .link {
@@ -150,17 +151,14 @@ afk_store.is_afk_watcher_enabled = false;
 
     text-decoration: none;
 
-    height: calc(91 / 1080 * 100vh);
-    width: calc(645 / 1920 * 100vw);
+    height: calc(101 / 1080 * 100vh);
 
-    &.upscaled {
-        width: 100%;
-        height: calc(101 / 1080 * 100vh);
-    }
+    width: 100%;
+
 }
 
 .main-start-button {
-    margin-top: calc(120 / 1080 * 100vh);
+    margin-top: calc(105 / 1080 * 100vh);
     width: calc(537 / 1920 * 100vw);
     height: calc(150 / 1920 * 100vw);
 
